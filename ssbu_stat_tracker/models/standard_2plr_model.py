@@ -1,8 +1,8 @@
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, Boolean
 from .database import Base
 
-class Standard2PlrMatch(Base):
-    __tablename__ = "standard_2plr_matches"
+class Standard2PlrStreak(Base):
+    __tablename__ = "standard_2plr_streaks"
 
     id = Column(Integer, primary_key=True, index=True)
     length = Column(Integer)
@@ -20,3 +20,4 @@ class Standard2PlrMatch(Base):
     player2_1v2_clutches = Column(Integer)
     date = Column(String)
     duration = Column(Float)
+    concluded = Column(Boolean)

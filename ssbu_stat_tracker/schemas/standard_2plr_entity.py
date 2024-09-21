@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Standard2PlrMatchCreate(BaseModel):
+class Standard2PlrStreakCreate(BaseModel):
     length: int
     player1: str
     player2: str
@@ -16,3 +16,4 @@ class Standard2PlrMatchCreate(BaseModel):
     player2_1v2_clutches: int
     date: str
     duration: float
+    concluded: bool
