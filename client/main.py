@@ -1,5 +1,5 @@
 from kivy.app import App
-from counter_screen import CounterScreen
+from .screens.counter_screen import CounterScreen
 
 class CounterApp(App):
     def build(self):
