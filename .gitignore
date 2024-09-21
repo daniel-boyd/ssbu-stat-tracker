@@ -1,0 +1,12 @@
+# Python virtual environment
+venv/
+ssbu_stat_tracker_venv/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Other common files to ignore
+*.log
+*.sqlite3
+*.env
