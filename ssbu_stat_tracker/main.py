@@ -1,22 +1,9 @@
-from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen
-from views.counter_view import CounterView  # Import your view
+from fastapi import FastAPI
+from .controllers import standard_2plr_controller
+from .models import database
 
-class SSBUStatTrackerApp(App):
-    def build(self):
-        sm = ScreenManager()
+app = FastAPI()
 
-        # Create an instance of StreakView
-        counter_view = CounterView()
+database.Base.metadata.create_all(bind=database.engine)
 
-        # Create a screen for the view
-        screen = Screen(name='counter')
-        screen.add_widget(counter_view)
-
-        # Add the screen to the screen manager
-        sm.add_widget(screen)
-
-        return sm
-
-if __name__ == '__main__':
-    SSBUStatTrackerApp().run()
+app.include_router(standard_2plr_controller.router)
