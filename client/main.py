@@ -1,9 +1,9 @@
 from kivy.app import App
-from .screens.counter_screen import CounterScreen
+from .screens.character_select import CharacterSelectScreen
 
-class CounterApp(App):
+class App(App):
     def build(self):
-        return CounterScreen()
+        return CharacterSelectScreen()
 
 if __name__ == '__main__':
-    CounterApp().run()
+    App().run()
