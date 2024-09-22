@@ -21,3 +21,4 @@ class Standard2PlrStreak(Base):
     date = Column(String)
     duration = Column(Float)
     concluded = Column(Boolean)
+    #TODO: add stage list

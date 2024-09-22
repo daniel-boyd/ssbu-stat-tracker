@@ -17,3 +17,4 @@ class Standard2PlrStreakCreate(BaseModel):
     date: str
     duration: float
     concluded: bool
+    #TODO: add stage list
