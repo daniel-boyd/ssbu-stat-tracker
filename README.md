@@ -8,7 +8,7 @@ A Kivy-based application for tracking streaks and statistics in Super Smash Bros
     python -m venv ssbu_stat_tracker_venv
 3. Run virtual environment
     ```bash
-    Activate
+    ssbu_stat_tracker_venv/Scripts/activate
 4. Install dependencies:
     ```bash
     pip install -r requirements.txt
