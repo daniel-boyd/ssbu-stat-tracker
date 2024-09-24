@@ -12,3 +12,7 @@ A Kivy-based application for tracking streaks and statistics in Super Smash Bros
 4. Install dependencies:
     ```bash
     pip install -r requirements.txt
+5. Run Server: python -m server.main
+   or
+   Run Client: python -m client.main
+   [This will be handled by a script later]
