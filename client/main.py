@@ -1,4 +1,4 @@
-from kivy.app import App
+from kivymd.app import App
 from .screens.character_select import CharacterSelectScreen
 
 class App(App):
