@@ -61,7 +61,7 @@
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .4, "center_y": .5}
-                on_release: app.root.get_screen('main_menu').on_play_button_click()
+                on_release: on_release: app.root.get_screen('select_player_count').two_players_button_clicked()
                 font_size: "50sp"
 
             MDExtendedFabButton:
@@ -69,4 +69,4 @@
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .6, "center_y": .5}
-                on_release: app.root.get_screen('main_menu').on_play_button_click()
+                on_release: app.root.get_screen('select_player_count').three_players_button_clicked()

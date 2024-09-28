@@ -1,0 +1,59 @@
+<SelectPlayerNames>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+
+        MDBoxLayout:
+            id: back_btn_box
+            adaptive_size: False
+            spacing: "64dp"
+            size_hint: None, None
+            width: "85dp"
+            height: "85dp"
+            pos_hint: {"center_x": 0.06, "center_y": 0.9}
+
+            MDExtendedFabButton:
+                id: back_btn
+                size_hint: None, None
+                width: "85dp"
+                height: "85dp"
+                on_release: app.root.get_screen('select_player_names').on_back_button_clicked()
+
+                MDExtendedFabButtonIcon:
+                    icon: "chevron-left"
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        MDBoxLayout:
+            id: player_labels_box
+            orientation: 'horizontal'
+            spacing: "10dp"
+            size_hint: (0.8, None)
+            height: "100dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
+        MDBoxLayout:
+            id: text_field_box 
+            orientation: 'horizontal'
+            spacing: "10dp"
+            size_hint: (0.8, None)
+            height: "100dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+
+        MDBoxLayout:
+            id: continue_button_box
+            adaptive_size: False
+            orientation: 'vertical'
+            spacing: "10dp"
+            size_hint: 0.35, None
+            height: "250dp"
+            pos_hint: {"center_x": .5, "center_y": .375}
+
+            MDExtendedFabButton:
+                id: continue_button
+                size_hint: 1, None
+                height: "125dp"
+                pos_hint: {"center_x": .5, "center_y": .3}
+                on_release: app.root.get_screen('select_player_names').on_continue_button_click()
+                MDExtendedFabButtonText:
+                    text: "Continue"

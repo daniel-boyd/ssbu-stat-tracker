@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 from kivymd.uix.screenmanager import ScreenManager
 from .screens.main_menu import MainMenu
 from .screens.select_player_count import SelectPlayerCount
+from .screens.select_player_names import SelectPlayerNames
 from .screens.character_select import CharacterSelectScreen
 
 class SsbuStatTracker(MDApp):
@@ -13,6 +14,7 @@ class SsbuStatTracker(MDApp):
         sm = ScreenManager()
         sm.add_widget(MainMenu(name='main_menu'))
         sm.add_widget(SelectPlayerCount(name='select_player_count'))
+        sm.add_widget(SelectPlayerNames(name='select_player_names'))
         return sm
 
 if __name__ == '__main__':
