@@ -30,7 +30,8 @@
                 size_hint: 1, None
                 height: "125dp"
                 pos_hint: {"center_x": .5, "center_y": .4}
-                on_release: app.root.on_play_button_click()
+                on_release: app.root.get_screen('main_menu').on_play_button_click()
+                font_size: "50sp"
                 MDExtendedFabButtonText:
                     text: "Play!"
 
@@ -39,6 +40,6 @@
                 size_hint: 1, None
                 height: "125dp"
                 pos_hint: {"center_x": .5, "center_y": .3}
-                on_release: app.root.on_play_button_click()
+                on_release: app.root.get_screen('main_menu').on_play_button_click()
                 MDExtendedFabButtonText:
                     text: "Stats"

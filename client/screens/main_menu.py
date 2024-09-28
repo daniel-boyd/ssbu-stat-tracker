@@ -5,4 +5,4 @@ Builder.load_file("client/layouts/main_menu.kv")
 
 class MainMenu(MDScreen):
     def on_play_button_click(self):
-        print("Play button clicked!")
+        self.manager.current = 'select_player_count'
