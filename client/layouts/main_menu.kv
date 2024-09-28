@@ -1,0 +1,44 @@
+<MainMenu>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+
+        MDBoxLayout:
+            id: box
+            adaptive_size: False
+            spacing: "64dp"
+            size_hint: 0.9, None
+            height: "100dp"
+            pos_hint: {"center_x": .5, "center_y": .75}
+
+            MDLabel:
+                text:  "SSBU Streak Tracker"
+                halign: "center"
+                font_style: "Display"
+                font_size: "24sp"
+
+        MDBoxLayout:
+            id: box
+            adaptive_size: False
+            orientation: 'vertical'
+            spacing: "10dp"
+            size_hint: 0.35, None
+            height: "250dp"
+            pos_hint: {"center_x": .5, "center_y": .375}
+
+            MDExtendedFabButton:
+                id: play-btn
+                size_hint: 1, None
+                height: "125dp"
+                pos_hint: {"center_x": .5, "center_y": .4}
+                on_release: app.root.on_play_button_click()
+                MDExtendedFabButtonText:
+                    text: "Play!"
+
+            MDExtendedFabButton:
+                id: play-btn
+                size_hint: 1, None
+                height: "125dp"
+                pos_hint: {"center_x": .5, "center_y": .3}
+                on_release: app.root.on_play_button_click()
+                MDExtendedFabButtonText:
+                    text: "Stats"
