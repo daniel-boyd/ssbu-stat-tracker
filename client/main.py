@@ -9,7 +9,7 @@ from .screens.character_select import CharacterSelectScreen
 class SsbuStatTracker(MDApp):
     def build(self):
         Window.size = (1024, 600) 
-        self.theme_cls.primary_palette = "Teal"
+        self.theme_cls.primary_palette = "Yellow"
         self.theme_cls.theme_style = "Dark"
         sm = ScreenManager()
         sm.add_widget(MainMenu(name='main_menu'))
