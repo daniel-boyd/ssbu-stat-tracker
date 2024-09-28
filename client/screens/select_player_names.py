@@ -19,7 +19,7 @@ class SelectPlayerNames(MDScreen):
         self.manager.current = 'select_player_count'
 
     def on_continue_button_clicked(self):
-        self.manager.current = 'select_player_count'
+        self.manager.current = 'select_gamemode'
 
     def on_enter(self):
         self.update_text_fields()

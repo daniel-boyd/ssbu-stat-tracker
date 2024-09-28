@@ -1,4 +1,4 @@
-<SelectGameMode>:
+<SelectCharacterMode>:
     MDScreen:
         md_bg_color: self.theme_cls.backgroundColor
 
@@ -16,7 +16,7 @@
                 size_hint: None, None
                 width: "85dp"
                 height: "85dp"
-                on_release: app.root.get_screen('select_gamemode').on_back_button_clicked()
+                on_release: app.root.get_screen('select_character_mode').on_back_button_clicked()
 
                 MDExtendedFabButtonIcon:
                     icon: "chevron-left"
@@ -34,14 +34,14 @@
             pos_hint: {"center_x": .5, "center_y": .75}
 
             MDLabel:
-                text:  "Standard"
+                text:  "Pick"
                 halign: "center"
                 font_style: "Headline"
                 font_size: "24sp"
                 pos_hint: {"center_x": .35, "center_y": .7}
 
             MDLabel:
-                text:  "Handicap"
+                text:  "Randoms"
                 halign: "center"
                 font_style: "Headline"
                 font_size: "24sp"
@@ -61,7 +61,7 @@
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .4, "center_y": .5}
-                on_release: on_release: app.root.get_screen('select_gamemode').standard_button_clicked()
+                on_release: on_release: app.root.get_screen('select_character_mode').pick_button_clicked()
                 font_size: "50sp"
 
             MDExtendedFabButton:
@@ -69,4 +69,4 @@
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .6, "center_y": .5}
-                on_release: app.root.get_screen('select_gamemode').handicap_button_clicked()
+                on_release: app.root.get_screen('select_character_mode').randoms_button_clicked()
