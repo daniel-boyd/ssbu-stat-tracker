@@ -1,0 +1,57 @@
+<StageList>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+        size_hint: 1, 1
+
+        MDGridLayout:
+            cols: 3
+            rows: 3
+            padding: dp(10)
+            spacing: dp(10)
+            size_hint: 1, 1
+
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\battlefield.png'
+                on_release: app.on_stage_selected('battlefield')
+                
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\fd.png'
+
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\kalos.png'
+        
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\ps2.png'
+                    
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\smallbattlefield.png'
+            
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\smashville.png'
+
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\townandcity.png'
+
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\warioware.png'
+
+            Button:
+                size_hint: None, None
+                size: 330, 187.5
+                background_normal: r'resources\stage_images\yoshistory.png'

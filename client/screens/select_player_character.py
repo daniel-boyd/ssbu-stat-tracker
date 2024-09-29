@@ -15,3 +15,6 @@ class SelectPlayerCharacter(MDScreen):
     def player2_button_clicked(self):
             # shared.set_current_match("player_2", "character.png")
         self.manager.current = 'select_character'
+    
+    def start_button_clicked(self):
+        self.manager.current = 'match_screen'

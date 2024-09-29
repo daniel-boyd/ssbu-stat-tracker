@@ -9,6 +9,7 @@ from .screens.select_gamemode import SelectGameMode
 from .screens.select_character_mode import SelectCharacterMode
 from .screens.select_character import SelectCharacter
 from .screens.select_player_character import SelectPlayerCharacter
+from .screens.stage_list import StageList
 
 class SsbuStatTracker(MDApp):
     def build(self):
@@ -23,6 +24,7 @@ class SsbuStatTracker(MDApp):
         sm.add_widget(SelectCharacterMode(name='select_character_mode'))
         sm.add_widget(SelectCharacter(name='select_character'))
         sm.add_widget(SelectPlayerCharacter(name='select_player_character'))
+        sm.add_widget(StageList(name='stage_list'))
         return sm
 
 if __name__ == '__main__':
