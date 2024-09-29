@@ -47,7 +47,7 @@
             spacing: "10dp"
             size_hint: 0.35, None
             height: "250dp"
-            pos_hint: {"center_x": .5, "center_y": .58}
+            pos_hint: {"center_x": .5, "center_y": .575}
 
             MDExtendedFabButton:
                 id: continue_button
@@ -68,4 +68,5 @@
             pos_hint: {"center_x": 0.67, "center_y": 0.25}
 
             VKeyboard:
+                on_key_up: app.root.get_screen('select_player_names').key_up(*args)
 

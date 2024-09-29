@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.vkeyboard import VKeyboard
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.label import MDLabel
-from kivymd.uix.textfield import MDTextField, MDTextFieldHintText
+from kivymd.uix.textfield import MDTextField
 
 Builder.load_file("client/layouts/select_player_names.kv")
 
@@ -13,15 +13,50 @@ class SelectPlayerNames(MDScreen):
         Config.set("kivy", "keyboard_mode", "dock")
         self.number_of_players = 2
         self.text_fields = []
+        self.caps_lock = False
 
     def on_back_button_clicked(self):
         self.manager.current = 'select_player_count'
 
     def on_continue_button_clicked(self):
+        # Don't allow empty names
+        for text_field in self.text_fields:
+            if text_field.text == "":
+                return
         self.manager.current = 'select_gamemode'
+                
 
     def on_enter(self):
         self.update_text_fields()
+
+    def key_up(self, keyboard, keycode, *args):
+        if isinstance(keycode, tuple):
+            keycode = keycode[1]
+
+        current_focused = None
+        for text_field in self.text_fields:
+            if text_field.focus:
+                current_focused = text_field
+                break
+
+        if current_focused is not None:
+            if keycode == "backspace":
+                current_focused.text = current_focused.text[:-1]
+                return
+            elif keycode == "capslock" or keycode == "CAPSLOCK":
+                self.caps_lock = not self.caps_lock
+                return
+            elif keycode == "enter":
+                return
+            elif keycode == "spacebar":
+                return
+            elif keycode == "shift":
+                return
+            
+            if self.caps_lock:
+                keycode = keycode.upper()
+
+            current_focused.text += keycode
 
     def update_text_fields(self):
         self.ids.player_labels_box.clear_widgets()
@@ -42,20 +77,6 @@ class SelectPlayerNames(MDScreen):
                 height="240dp",
                 hint_text="Enter Name",
             )
-            # text_field.bind(focus=self.on_focus)
             self.ids.text_field_box.add_widget(text_field)
 
             self.text_fields.append(text_field)
-
-    # def on_focus(self, instance, value):
-    #     if value:
-    #         self.vkeyboard.active = True
-    #         self.vkeyboard.bind(on_key_down=self.on_key_down)
-    #     else:
-    #         self.vkeyboard.active = False 
-
-    # def on_key_down(self, keyboard, keycode, text, modifiers):
-    #     current_field = [field for field in self.text_fields if field.focus]
-    #     if current_field:
-    #         current_field[0].text += text
-    #     return False
