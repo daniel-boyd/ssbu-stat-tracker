@@ -6,8 +6,9 @@ from .screens.main_menu import MainMenu
 from .screens.select_player_count import SelectPlayerCount
 from .screens.select_player_names import SelectPlayerNames
 from .screens.select_gamemode import SelectGameMode
-from.screens.select_character_mode import SelectCharacterMode
+from .screens.select_character_mode import SelectCharacterMode
 from .screens.select_character import SelectCharacter
+from .screens.select_player_character import SelectPlayerCharacter
 
 class SsbuStatTracker(MDApp):
     def build(self):
@@ -21,6 +22,7 @@ class SsbuStatTracker(MDApp):
         sm.add_widget(SelectGameMode(name='select_gamemode'))
         sm.add_widget(SelectCharacterMode(name='select_character_mode'))
         sm.add_widget(SelectCharacter(name='select_character'))
+        sm.add_widget(SelectPlayerCharacter(name='select_player_character'))
         return sm
 
 if __name__ == '__main__':

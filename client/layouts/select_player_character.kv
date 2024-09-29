@@ -1,0 +1,77 @@
+<SelectPlayerCharacter>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+
+        MDBoxLayout:
+            id: back_btn_box
+            adaptive_size: False
+            spacing: "64dp"
+            size_hint: None, None
+            width: "85dp"
+            height: "85dp"
+            pos_hint: {"center_x": 0.06, "center_y": 0.9}
+
+            MDExtendedFabButton:
+                id: back_btn
+                size_hint: None, None
+                width: "85dp"
+                height: "85dp"
+                on_release: app.root.get_screen('select_player_character').on_back_button_clicked()
+
+                MDExtendedFabButtonIcon:
+                    icon: "chevron-left"
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        MDBoxLayout:
+            id: box
+            adaptive_size: False
+            orientation: 'horizontal'
+            spacing: "10dp"
+            size_hint: 0.68, None
+            height: "50dp"
+            pos_hint: {"center_x": .5, "center_y": .75}
+
+            MDLabel:
+                text:  "Player1"
+                halign: "center"
+                font_style: "Headline"
+                font_size: "24sp"
+                pos_hint: {"center_x": .35, "center_y": .7}
+
+            MDLabel:
+                text:  "Player2"
+                halign: "center"
+                font_style: "Headline"
+                font_size: "24sp"
+                pos_hint: {"center_x": .65, "center_y": .7}
+
+        MDBoxLayout:
+            id: box
+            adaptive_size: False
+            orientation: 'horizontal'
+            spacing: "40dp"
+            size_hint: 0.65, None
+            height: "250dp"
+            pos_hint: {"center_x": .5, "center_y": .45}
+
+            MDExtendedFabButton:
+                id: play-btn
+                size_hint: 1, None
+                height: "300dp"
+                pos_hint: {"center_x": .4, "center_y": .5}
+                on_release: on_release: app.root.get_screen('select_player_character').player1_button_clicked()
+                font_size: "50sp"
+
+            MDExtendedFabButton:
+                id: play-btn
+                size_hint: 1, None
+                height: "300dp"
+                pos_hint: {"center_x": .6, "center_y": .5}
+                on_release: app.root.get_screen('select_player_character').player2_button_clicked()
+
+                MDExtendedFabButtonIcon:
+                    icon: "human-walker"
+                    size_hint: 1, 1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}

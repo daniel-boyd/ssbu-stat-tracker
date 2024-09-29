@@ -11,7 +11,7 @@ class SelectCharacterMode(MDScreen):
     def pick_button_clicked(self):
         shared.set_current_match("character_mode_str", "pick")
         shared.set_current_format()
-        self.manager.current = 'select_character'
+        self.manager.current = 'select_player_character'
 
     def random_button_clicked(self):
         shared.set_current_match("character_mode_str", "random")
