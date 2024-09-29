@@ -1,3 +1,4 @@
+from kivy.config import Config
 from kivy.lang import Builder
 from kivy.uix.vkeyboard import VKeyboard
 from kivymd.uix.screen import MDScreen
@@ -9,11 +10,9 @@ Builder.load_file("client/layouts/select_player_names.kv")
 class SelectPlayerNames(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        Config.set("kivy", "keyboard_mode", "dock")
         self.number_of_players = 2
         self.text_fields = []
-        # self.vkeyboard = VKeyboard(size_hint=(1, 0.4), pos_hint={"center_x": 0.75, "y": 0.2})
-        # self.vkeyboard.bind(on_key_down=self.on_key_down)
-        # self.add_widget(self.vkeyboard)
 
     def on_back_button_clicked(self):
         self.manager.current = 'select_player_count'

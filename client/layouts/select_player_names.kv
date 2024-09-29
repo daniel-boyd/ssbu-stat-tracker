@@ -30,7 +30,7 @@
             spacing: "10dp"
             size_hint: (0.8, None)
             height: "100dp"
-            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
 
         MDBoxLayout:
             id: text_field_box 
@@ -38,7 +38,7 @@
             spacing: "10dp"
             size_hint: (0.8, None)
             height: "100dp"
-            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
 
         MDBoxLayout:
             id: continue_button_box
@@ -47,7 +47,7 @@
             spacing: "10dp"
             size_hint: 0.35, None
             height: "250dp"
-            pos_hint: {"center_x": .5, "center_y": .375}
+            pos_hint: {"center_x": .5, "center_y": .58}
 
             MDExtendedFabButton:
                 id: continue_button
@@ -57,3 +57,15 @@
                 on_release: app.root.get_screen('select_player_names').on_continue_button_clicked()
                 MDExtendedFabButtonText:
                     text: "Continue"
+
+        MDBoxLayout:
+            id: vkeyboard_box
+            adaptive_size: False
+            orientation: 'horizontal'
+            spacing: "0dp"
+            size_hint: 1, None
+            height: "300dp"
+            pos_hint: {"center_x": 0.67, "center_y": 0.25}
+
+            VKeyboard:
+
