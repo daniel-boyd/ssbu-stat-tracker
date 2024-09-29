@@ -39,6 +39,11 @@ def get_current_match():
 def set_current_format():
     current_match["format"] = current_match["game_mode_str"] + '_' + current_match["num_players_str"] + '_' + current_match["character_mode_str"]
 
-
 def set_current_match(key, value):
     current_match[key] = value
+
+def remove_key_from_current_match(key):
+    try:
+        del current_match[key]
+    except KeyError:
+        pass

@@ -9,6 +9,11 @@ class SelectGameMode(MDScreen):
         self.manager.current = 'select_player_names'
 
     def standard_button_clicked(self):
+        # TODO: REMOVE
+        current_match = shared.get_current_match()
+        print("**********")
+        for key, value in current_match.items():
+            print(f"{key}: {value}")
         self.manager.current = 'select_character_mode'
 
     def handicap_button_clicked(self):

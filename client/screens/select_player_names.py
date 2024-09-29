@@ -1,3 +1,4 @@
+from .. import shared
 from kivy.config import Config
 from kivy.lang import Builder
 from kivy.uix.vkeyboard import VKeyboard
@@ -22,6 +23,15 @@ class SelectPlayerNames(MDScreen):
         for text_field in self.text_fields:
             if text_field.text == "":
                 return
+
+        for index, text_field in enumerate(self.text_fields):
+            plr_str = f"player_{index + 1}"
+            print(plr_str)
+            # All players in the game will be added, remove any existing player in case player count changes
+            shared.remove_key_from_current_match(plr_str)
+            # Always remove player_3
+            shared.remove_key_from_current_match("player_3")
+            shared.set_current_match(plr_str, text_field.text)
         self.manager.current = 'select_gamemode'
                 
 
