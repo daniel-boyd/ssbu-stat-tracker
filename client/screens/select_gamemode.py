@@ -1,5 +1,6 @@
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
+from .. import shared
 
 Builder.load_file("client/layouts/select_gamemode.kv")
 
@@ -11,4 +12,6 @@ class SelectGameMode(MDScreen):
         self.manager.current = 'select_character_mode'
 
     def handicap_button_clicked(self):
+        shared.set_current_match("game_mode_str", "handicap")
+        shared.set_current_format()
         self.manager.current = 'select_character_mode'
