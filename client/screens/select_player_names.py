@@ -19,7 +19,6 @@ class SelectPlayerNames(MDScreen):
         self.manager.current = 'select_player_count'
 
     def on_continue_button_clicked(self):
-        # Don't allow empty names
         for text_field in self.text_fields:
             if text_field.text == "":
                 return
@@ -59,6 +58,7 @@ class SelectPlayerNames(MDScreen):
             current_focused.text += keycode
 
     def update_text_fields(self):
+        self.text_fields.clear()
         self.ids.player_labels_box.clear_widgets()
         self.ids.text_field_box.clear_widgets()
 
