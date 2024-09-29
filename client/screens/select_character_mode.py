@@ -8,8 +8,7 @@ class SelectCharacterMode(MDScreen):
         self.manager.current = 'select_gamemode'
 
     def pick_button_clicked(self):
-        pass
-        # self.manager.current = 'select_character'
+        self.manager.current = 'select_character'
 
     def randoms_button_clicked(self):
         pass

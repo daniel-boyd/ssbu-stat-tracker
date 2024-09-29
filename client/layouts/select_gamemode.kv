@@ -64,9 +64,19 @@
                 on_release: on_release: app.root.get_screen('select_gamemode').standard_button_clicked()
                 font_size: "50sp"
 
+                Image:
+                    source: 'resources/character_images/pikachu.png'
+                    size: dp(300), dp(300)
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
             MDExtendedFabButton:
                 id: play-btn
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .6, "center_y": .5}
                 on_release: app.root.get_screen('select_gamemode').handicap_button_clicked()
+
+                MDExtendedFabButtonIcon:
+                    icon: "human-walker"
+                    size_hint: 1, 1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}

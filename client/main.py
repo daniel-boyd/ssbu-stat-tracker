@@ -19,7 +19,7 @@ class SsbuStatTracker(MDApp):
         sm.add_widget(SelectPlayerNames(name='select_player_names'))
         sm.add_widget(SelectGameMode(name='select_gamemode'))
         sm.add_widget(SelectCharacterMode(name='select_character_mode'))
-        # sm.add_widget(SelectCharacter(name='select_character'))
+        sm.add_widget(SelectCharacter(name='select_character'))
         return sm
 
 if __name__ == '__main__':
