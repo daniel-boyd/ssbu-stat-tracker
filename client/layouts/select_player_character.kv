@@ -81,14 +81,14 @@
             adaptive_size: False
             orientation: 'horizontal'
             spacing: "40dp"
-            size_hint: 0.65, None
-            height: "300dp"
-            pos_hint: {"center_x": .5, "center_y": .3}
+            size_hint: 0.75, None
+            height: "80dp"
+            pos_hint: {"center_x": .5, "center_y": .1}
 
             MDExtendedFabButton:
                 id: continue_button
                 size_hint: 1, None
-                height: "125dp"
+                height: "80dp"
                 pos_hint: {"center_x": .5, "center_y": .3}
                 on_release: app.root.get_screen('select_player_character').start_button_clicked
                 MDExtendedFabButtonText:
