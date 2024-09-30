@@ -20,6 +20,7 @@ class SelectPlayerNames(MDScreen):
         self.manager.transition.direction = 'right'
         self.manager.current = 'select_player_count'
 
+    # TODO: Validate that no two or more players are using the same name
     def on_continue_button_clicked(self):
         for text_field in self.text_fields:
             if text_field.text == "":
