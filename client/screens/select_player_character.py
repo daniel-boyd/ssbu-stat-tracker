@@ -8,7 +8,7 @@ class SelectPlayerCharacter(MDScreen):
     selected_player_key = None
 
     def on_back_button_clicked(self):
-        self.manager.current = 'select_character_mode.kv'
+        self.manager.current = 'select_character_mode'
 
     def on_character_button_pressed(self, button):
         character_name = button.character_name
