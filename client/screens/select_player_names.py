@@ -17,6 +17,7 @@ class SelectPlayerNames(MDScreen):
         self.caps_lock = False
 
     def on_back_button_clicked(self):
+        self.manager.transition.direction = 'right'
         self.manager.current = 'select_player_count'
 
     def on_continue_button_clicked(self):
@@ -32,6 +33,7 @@ class SelectPlayerNames(MDScreen):
             # Always remove player_3
             shared.remove_key_from_current_match("player_3")
             shared.set_current_match(plr_str, text_field.text)
+        self.manager.transition.direction = 'left'
         self.manager.current = 'select_gamemode'
                 
 
