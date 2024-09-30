@@ -51,28 +51,37 @@
             id: box
             adaptive_size: False
             orientation: 'horizontal'
-            spacing: "40dp"
-            size_hint: 0.65, None
-            height: "300dp"
-            pos_hint: {"center_x": .5, "center_y": .45}
+            spacing: "230dp"
+            width: "600dp"
+            height: "400dp"
+            pos_hint: {"center_x": 0.765, "center_y": .6}
 
             MDExtendedFabButton:
-                id: play-btn
-                size_hint: 1, None
-                height: "300dp"
+                id: player_1_button
+                size_hint: None, None
+                width: "128dp"
+                height: "128dp"
                 pos_hint: {"center_x": .4, "center_y": .5}
                 on_release: on_release: app.root.get_screen('select_player_character').player1_button_clicked()
                 font_size: "50sp"
 
+                Image:
+                    source: ''
+                    opacity: 0
+                    size_hint: 1, 1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
             MDExtendedFabButton:
-                id: play-btn
-                size_hint: 1, None
-                height: "300dp"
+                id: player_2_button
+                size_hint: None, None
+                width: "128dp"
+                height: "128dp"
                 pos_hint: {"center_x": .6, "center_y": .5}
                 on_release: app.root.get_screen('select_player_character').player2_button_clicked()
 
-                MDExtendedFabButtonIcon:
-                    icon: "human-walker"
+                Image:
+                    source: ''
+                    opacity: 0
                     size_hint: 1, 1
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
@@ -81,9 +90,9 @@
             adaptive_size: False
             orientation: 'horizontal'
             spacing: "40dp"
-            size_hint: 0.75, None
-            height: "80dp"
-            pos_hint: {"center_x": .5, "center_y": .1}
+            size_hint: 0.4, None
+            height: "125dp"
+            pos_hint: {"center_x": .5, "center_y": .3}
 
             MDExtendedFabButton:
                 id: continue_button

@@ -5,15 +5,30 @@ from .. import shared
 Builder.load_file("client/layouts/select_player_character.kv")
 
 class SelectPlayerCharacter(MDScreen):
-    selected_player_key = None
+    selected_player = None
+
+    # Cleanup buttons and current_match keys on enter
+    def cleanup(self):
+        player_1_button = self.ids.player_1_button
+        player_2_button = self.ids.player_2_button
+        shared.set_current_match("player_1_character", "")
+        shared.set_current_match("player_2_character", "")
+        player_1_button.children[0].opacity = 0
+        player_2_button.children[0].opacity = 0
+        player_1_button.children[0].source = ''
+        player_2_button.children[0].source = ''
 
     def on_back_button_clicked(self):
         self.manager.transition.direction = 'right'
         self.manager.current = 'select_character_mode'
+        self.cleanup()
 
     def on_character_button_pressed(self, button):
         character_name = button.character_name
-        shared.set_current_match(self.selected_player_key, character_name)
+        character_image_source = 'resources/character_images/' + character_name.lower() + '.png'
+        selected_player_key = self.selected_player + '_character'
+        shared.set_current_match(selected_player_key, character_name)
+        self.populate_player_button_image(character_image_source)
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
         self.manager.current = 'select_player_character'
@@ -21,15 +36,22 @@ class SelectPlayerCharacter(MDScreen):
         current_match = shared.get_current_match()
         print(current_match)
 
+    def populate_player_button_image(self, image_source):
+        id = self.selected_player + '_button'
+        button = self.ids.get(id) 
+        image = button.children[0]
+        image.source = image_source
+        image.opacity = 1
+
     def player1_button_clicked(self):
-        self.selected_player_key = "player_1_character"
+        self.selected_player = "player_1"
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
         self.manager.transition.duration = 0.4
 
     def player2_button_clicked(self):
-        self.selected_player_key = "player_2_character"
+        self.selected_player = "player_2"
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
