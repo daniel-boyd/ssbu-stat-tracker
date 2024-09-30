@@ -64,9 +64,19 @@
                 on_release: on_release: app.root.get_screen('select_player_count').two_players_button_clicked()
                 font_size: "50sp"
 
+                Image:
+                    source: 'resources/menu_images/big_mario.jpg'
+                    size_hint: 1, 1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
             MDExtendedFabButton:
                 id: play-btn
                 size_hint: 1, None
                 height: "300dp"
                 pos_hint: {"center_x": .6, "center_y": .5}
                 on_release: app.root.get_screen('select_player_count').three_players_button_clicked()
+
+                Image:
+                    source: 'resources/menu_images/fun_basketball.jpg'
+                    size_hint: 0.85, 0.85
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
