@@ -9,13 +9,13 @@ class SelectPlayerCount(MDScreen):
         self.manager.current = 'main_menu'
 
     def two_players_button_clicked(self):
-        shared.set_current_match("num_players_str", "2p")
+        shared.remove_player_3()
         shared.set_current_format()
         self.manager.get_screen('select_player_names').number_of_players = 2
         self.manager.current = 'select_player_names'
 
     def three_players_button_clicked(self):
-        shared.set_current_match("num_players_str", "3p")
+        shared.add_player_3()
         shared.set_current_format()
         self.manager.get_screen('select_player_names').number_of_players = 3
         self.manager.current = 'select_player_names'

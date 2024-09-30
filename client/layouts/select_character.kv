@@ -8,12 +8,15 @@
             rows: 8
             cols: 11
 
-            Button:
+            CharacterButton:
+                id: mario
+                character_name: "Mario"
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
                 background_color: 1, 0.65, 0, 1
                 button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('select_player_character').on_character_button_pressed(self)
                 Image:
                     source: 'resources/character_images/mario.png'
                     size: 96.091, 75
@@ -22,7 +25,7 @@
                     y: self.parent.y
                     x: self.parent.x
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -36,7 +39,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -50,7 +53,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -64,7 +67,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -78,7 +81,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -92,7 +95,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -106,7 +109,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -120,7 +123,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -134,7 +137,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -148,7 +151,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -162,7 +165,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -176,7 +179,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -190,7 +193,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -204,7 +207,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -218,7 +221,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -232,7 +235,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -246,7 +249,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -260,7 +263,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -274,7 +277,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -288,7 +291,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -302,7 +305,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -316,7 +319,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -330,7 +333,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -344,7 +347,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -358,7 +361,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -372,7 +375,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -386,7 +389,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -400,7 +403,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -414,7 +417,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -428,7 +431,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -442,7 +445,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -456,7 +459,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -470,7 +473,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -484,7 +487,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -498,7 +501,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -512,7 +515,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -526,7 +529,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -540,7 +543,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -554,7 +557,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -568,7 +571,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -582,7 +585,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -596,7 +599,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -610,7 +613,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -624,7 +627,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -638,7 +641,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -652,7 +655,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -666,7 +669,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -680,7 +683,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -694,7 +697,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -708,7 +711,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -722,7 +725,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -736,7 +739,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -750,7 +753,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -764,7 +767,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -778,7 +781,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -792,7 +795,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -806,7 +809,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -820,7 +823,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -834,7 +837,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -848,7 +851,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -862,7 +865,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -876,7 +879,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -890,7 +893,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -904,7 +907,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -918,7 +921,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -932,7 +935,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -946,7 +949,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -960,7 +963,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -974,7 +977,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -988,7 +991,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1002,7 +1005,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1016,7 +1019,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1030,7 +1033,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1044,7 +1047,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1058,7 +1061,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1072,7 +1075,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1086,11 +1089,11 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1104,7 +1107,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1118,7 +1121,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1132,7 +1135,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1146,7 +1149,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1160,7 +1163,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1174,7 +1177,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1188,7 +1191,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1202,7 +1205,7 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
                 background_normal: ''
@@ -1216,6 +1219,6 @@
                     y: self.parent.y 
                     x: self.parent.x 
 
-            Button:
+            CharacterButton:
                 size_hint: 1, 1
                 size: 96.091, 75
