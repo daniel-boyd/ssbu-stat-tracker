@@ -25,10 +25,9 @@ class SelectPlayerCharacter(MDScreen):
 
     def on_character_button_pressed(self, button):
         character_name = button.character_name
-        character_image_source = 'resources/character_images/' + character_name.lower() + '.png'
         selected_player_key = self.selected_player + '_character'
         shared.set_current_match(selected_player_key, character_name)
-        self.populate_player_button_image(character_image_source)
+        self.populate_player_button_image(button.children[0].source)
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
         self.manager.current = 'select_player_character'
