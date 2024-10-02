@@ -1,7 +1,6 @@
-import datetime
 from kivy.core.window import Window
 from kivymd.app import MDApp
-from kivymd.uix.screenmanager import ScreenManager
+from .ssbu_screen_manager import SsbuScreenManager
 from .screens.main_menu import MainMenu
 from .screens.select_player_count import SelectPlayerCount
 from .screens.select_player_names import SelectPlayerNames
@@ -16,7 +15,7 @@ class SsbuStatTracker(MDApp):
         Window.size = (1024, 600) 
         self.theme_cls.primary_palette = "Yellow"
         self.theme_cls.theme_style = "Dark"
-        sm = ScreenManager()
+        sm = SsbuScreenManager()
         sm.add_widget(MainMenu(name='main_menu'))
         sm.add_widget(SelectPlayerCount(name='select_player_count'))
         sm.add_widget(SelectPlayerNames(name='select_player_names'))

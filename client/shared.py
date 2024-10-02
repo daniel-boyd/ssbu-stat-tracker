@@ -38,6 +38,9 @@ current_match = {
 def get_current_match():
     return current_match
 
+def get_current_match_value_from_key(key):
+    return current_match[key]
+
 def set_current_format():
     current_match["format"] = current_match["game_mode_str"] + '_' + current_match["num_players_str"] + '_' + current_match["character_mode_str"]
 

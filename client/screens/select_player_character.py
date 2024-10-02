@@ -1,11 +1,27 @@
 from kivy.lang import Builder
+from kivy.uix.image import Image
 from kivymd.uix.screen import MDScreen
 from .. import shared
 
-Builder.load_file("client/layouts/select_player_character.kv")
-
 class SelectPlayerCharacter(MDScreen):
     selected_player = None
+
+    def __init__(self, kv_file=None, **kwargs):
+        super().__init__(**kwargs)
+        if kv_file:
+            self.load_kv_file(kv_file)
+
+    def on_pre_enter(self):
+        kv_file = ""
+        if shared.get_current_match_value_from_key("num_players_string") == "3p":
+            kv_file = 'select_player_character_3p.kv'
+        else:
+            kv_file = 'select_player_character_2p.kv'
+        self.manager.reinitialize_screen(SelectPlayerCharacter, 'select_player_character', kv_file)
+
+    def load_kv_file(self, kv_file):
+        """Load the specified .kv file."""
+        Builder.load_file(kv_file)
 
     # Cleanup buttons and current_match keys on enter
     def cleanup(self):
@@ -17,6 +33,13 @@ class SelectPlayerCharacter(MDScreen):
         player_2_button.children[0].opacity = 0
         player_1_button.children[0].source = ''
         player_2_button.children[0].source = ''
+
+        # 3p cleanup
+        if shared.get_current_match_value_from_key("num_players_str") == "3p":
+            player_3_button = self.ids.player_3_button
+            shared.set_current_match("player_3_character", "")
+            player_3_button.children[0].opacity = 0
+            player_3_button.children[0].source = ''
 
     def on_back_button_clicked(self):
         self.manager.transition.direction = 'right'
@@ -32,8 +55,6 @@ class SelectPlayerCharacter(MDScreen):
         self.manager.transition.direction = 'down'
         self.manager.current = 'select_player_character'
         self.manager.transition.duration = 0.4
-        current_match = shared.get_current_match()
-        print(current_match)
 
     def populate_player_button_image(self, image_source):
         id = self.selected_player + '_button'
@@ -55,14 +76,19 @@ class SelectPlayerCharacter(MDScreen):
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
         self.manager.transition.duration = 0.4
+
+    def player3_button_clicked(self):
+        self.selected_player = "player_3"
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'select_character'
+        self.manager.transition.duration = 0.4
     
     def start_button_clicked(self):
-        current_match = shared.get_current_match()
         # For players 1-3, check if they have a character selected before allowing the match to start
         for index in range(1, 3):
             plr_char_str = f"player_{index}_character"
-            if current_match[plr_char_str] == "":
-                print(plr_char_str + " not selected")
+            if shared.get_current_match_value_from_key(plr_char_str) == "":
                 return
         self.manager.transition.direction = 'left'
         self.manager.current = 'match_screen'

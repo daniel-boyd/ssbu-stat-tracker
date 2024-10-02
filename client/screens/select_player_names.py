@@ -28,7 +28,6 @@ class SelectPlayerNames(MDScreen):
 
         for index, text_field in enumerate(self.text_fields):
             plr_str = f"player_{index + 1}"
-            print(plr_str)
             # All players in the game will be added, remove any existing player in case player count changes
             shared.remove_key_from_current_match(plr_str)
             # Always remove player_3
