@@ -7,6 +7,12 @@ Builder.load_file("client/layouts/select_player_character.kv")
 class SelectPlayerCharacter(MDScreen):
     selected_player = None
 
+    def on_pre_enter(self):
+        player_1_label = self.ids.player_1_label
+        player_2_label = self.ids.player_2_label
+        player_1_label.text = shared.get_current_match_value_from_key("player_1")
+        player_2_label.text = shared.get_current_match_value_from_key("player_2")
+
     # Cleanup buttons and current_match keys on enter
     def cleanup(self):
         player_1_button = self.ids.player_1_button
@@ -65,4 +71,4 @@ class SelectPlayerCharacter(MDScreen):
                 print(plr_char_str + " not selected")
                 return
         self.manager.transition.direction = 'left'
-        self.manager.current = 'match_screen'
+        self.manager.current = 'match'
