@@ -13,3 +13,7 @@ class Match(MDScreen):
         player_2_label.text = shared.get_current_match_value_from_key("player_2")
         player_1_label.text = "dnl"
         player_2_label.text = "cnl"
+
+    def stage_button_clicked(self):
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'stage_list'

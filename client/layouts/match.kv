@@ -19,30 +19,34 @@
                 MDLabel:
                     id: player_1_label
                     text:  "Player1"
+                    halign: "center"
                     font_style: "Headline"
                     font_size: "24sp"
-                    pos_hint: {"center_x": 0.585, "center_y": .5}
+                    pos_hint: {"center_x": 0.11, "center_y": .5}
 
                 MDLabel:
                     id: player_2_label
                     text:  "Player2"
+                    halign: "center"
                     font_style: "Headline"
                     font_size: "24sp"
-                    pos_hint: {"center_x": 0.788, "center_y": .5}
+                    pos_hint: {"center_x": 0.3075, "center_y": .5}
 
                 MDLabel:
                     id: bot_1_label
                     text:  "Bot 1"
+                    halign: "center"
                     font_style: "Headline"
                     font_size: "24sp"
-                    pos_hint: {"center_x": 1.14, "center_y": .5}
+                    pos_hint: {"center_x": 0.6925, "center_y": .5}
 
                 MDLabel:
                     id: bot_2_label
                     text:  "Bot 2"
+                    halign: "center"
                     font_style: "Headline"
                     font_size: "24sp"
-                    pos_hint: {"center_x": 1.34, "center_y": .5}
+                    pos_hint: {"center_x": 0.89, "center_y": .5}
 
             MDFloatLayout:
                 id: player_portraits_box
@@ -78,12 +82,20 @@
                         size_hint: 1, 1
                         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
+                MDLabel:
+                    id: counter_label
+                    text:  "132"
+                    halign: "center"
+                    font_style: "Display"
+                    font_size: "500sp"
+                    pos_hint: {"center_x": 0.5, "center_y": .4}
+
                 MDExtendedFabButton:
                     id: bot_1_button
                     size_hint: None, None
                     width: "128dp"
                     height: "128dp"
-                    pos_hint: {"center_x": 0.675, "center_y": .5}
+                    pos_hint: {"center_x": 0.6925, "center_y": .5}
                     font_size: "50sp"
 
                     Image:
@@ -97,7 +109,7 @@
                     size_hint: None, None
                     width: "128dp"
                     height: "128dp"
-                    pos_hint: {"center_x": 0.876, "center_y": .5}
+                    pos_hint: {"center_x": 0.89, "center_y": .5}
 
                     Image:
                         source: ''
@@ -105,19 +117,60 @@
                         size_hint: 1, 1
                         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-        MDBoxLayout:
+        MDFloatLayout:
+            id: r2
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.3
+            pos_hint: {"center_x": .5, "center_y": 0.55}
+            
+            MDExtendedFabButton:
+                id: stage_button
+                size_hint: None, None
+                width: "128dp"
+                height: "128dp"
+                pos_hint: {"center_x": 0.5, "center_y": .5}
+                on_release: app.root.get_screen('match').stage_button_clicked()
+                Image:
+                    source: ''
+                    opacity: 0
+                    size_hint: 1, 1
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        MDFloatLayout:
             id: box
             adaptive_size: False
             orientation: 'horizontal'
-            size_hint: 0.4, None
-            height: "125dp"
+            size_hint: 1, 0.3
             pos_hint: {"center_x": .5, "center_y": .3}
 
             MDExtendedFabButton:
                 id: continue_button
-                size_hint: 1, None
-                height: "80dp"
+                size_hint: 0.3, 0.7
                 pos_hint: {"center_x": .5, "center_y": .3}
-                on_release: app.root.get_screen('select_player_character').start_button_clicked()
+                on_release: app.root.get_screen('match').won_button_clicked()
                 MDExtendedFabButtonText:
-                    text: "Start"
+                    text: "Won"
+
+        MDFloatLayout:
+            id: box
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": .5, "center_y": .075}
+
+            MDExtendedFabButton:
+                id: pause_button
+                size_hint: 0.1, 1
+                pos_hint: {"center_x": 0.83, "center_y": .5}
+                on_release: app.root.get_screen('match').pause_button_clicked()
+                MDExtendedFabButtonText:
+                    text: "Pause"
+
+            MDExtendedFabButton:
+                id: end_button
+                size_hint: 0.1, 1
+                pos_hint: {"center_x": .94, "center_y": .5}
+                on_release: app.root.get_screen('match').end_button_clicked()
+                MDExtendedFabButtonText:
+                    text: "End"
