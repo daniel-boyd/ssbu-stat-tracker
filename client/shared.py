@@ -24,8 +24,8 @@ current_match = {
     "player_2_character": "",
     "player_1_stocks": 0,
     "player_2_stocks": 0,
-    "player_1_deaths": 0,
-    "player_2_deaths": 0,
+    "player_1_died": 0,
+    "player_2_died": 0,
     "player1_1v1_clutches": 0,
     "player2_1v1_clutches": 0,
     "player1_1v2_clutches": 0,
@@ -38,6 +38,47 @@ current_match = {
     "duration": 0,
     "concluded": False
 }
+
+def pretty_print_current_match():
+    match_info = f"""
+    Current Match Information:
+    ---------------------------
+    Game Mode: {current_match["game_mode_str"]}
+    Number of Players: {current_match["num_players_str"]}
+    Character Mode: {current_match["character_mode_str"]}
+    Format: {current_match["format"]}
+    Length: {current_match["length"]}
+    
+    Players:
+    ---------------
+    Player 1: {current_match["player_1"]}
+        Character: {current_match["player_1_character"]}
+        Stocks: {current_match["player_1_stocks"]}
+        died: {current_match["player_1_died"]}
+        1v1 Clutches: {current_match["player1_1v1_clutches"]}
+        1v2 Clutches: {current_match["player1_1v2_clutches"]}
+    
+    Player 2: {current_match["player_2"]}
+        Character: {current_match["player_2_character"]}
+        Stocks: {current_match["player_2_stocks"]}
+        died: {current_match["player_2_died"]}
+        1v1 Clutches: {current_match["player2_1v1_clutches"]}
+        1v2 Clutches: {current_match["player2_1v2_clutches"]}
+    
+    Current Stage: {current_match["current_stage"]}
+    Bots:
+    -----------------
+    Bot 1 Characters: {', '.join(current_match["bot_1_character"]) if current_match["bot_1_character"] else "None"}
+    Bot 2 Characters: {', '.join(current_match["bot_2_character"]) if current_match["bot_2_character"] else "None"}
+    
+    Stages: {', '.join(current_match["stages"]) if current_match["stages"] else "None"}
+    
+    Date: {current_match["date"].strftime('%Y-%m-%d %H:%M:%S')}
+    Duration: {current_match["duration"]} seconds
+    Concluded: {'Yes' if current_match["concluded"] else 'No'}
+    """
+
+    print(match_info)
 
 def get_current_match():
     return current_match
@@ -62,7 +103,7 @@ def add_player_3():
     current_match["player_3"] = ""
     current_match["player_3_character"] = ""
     current_match["player_3_stocks"] = 0
-    current_match["player_3_deaths"] = 0
+    current_match["player_3_died"] = 0
     current_match["player3_1v1_clutches"] = 0
     current_match["player3_1v2_clutches"] = 0
 
@@ -71,6 +112,6 @@ def remove_player_3():
     remove_key_from_current_match("player_3")
     remove_key_from_current_match("player_3_character")
     remove_key_from_current_match("player_3_stocks")
-    remove_key_from_current_match("player_3_deaths")
+    remove_key_from_current_match("player_3_died")
     remove_key_from_current_match("player3_1v1_clutches")
     remove_key_from_current_match("player3_1v2_clutches")

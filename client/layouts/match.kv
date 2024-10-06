@@ -88,7 +88,7 @@
 
                 MDLabel:
                     id: counter_label
-                    text:  "132"
+                    text:  "0"
                     halign: "center"
                     font_style: "Display"
                     font_size: "500sp"
@@ -153,7 +153,7 @@
             pos_hint: {"center_x": .5, "center_y": .3}
 
             MDExtendedFabButton:
-                id: continue_button
+                id: won_button
                 size_hint: 0.3, 0.7
                 pos_hint: {"center_x": .5, "center_y": .3}
                 on_release: app.root.get_screen('match').won_button_clicked()

@@ -8,6 +8,7 @@ Builder.load_file("client/layouts/match.kv")
 class BotMDExtendedFabButton(MDExtendedFabButton):
     bot_id = ""
 
+# TODO: VERIFY PLAYER STATS GET SET BEFORE ALLOWING CONTINUE
 class Match(MDScreen):
     current_count = 0
     current_stage = ""
@@ -15,10 +16,10 @@ class Match(MDScreen):
     player_2_stocks = 0
     player_1_died = False
     player_2_died = False
-    player_1_1v1_clutched = 0
-    player_2_1v1_clutched = 0
-    player_1_1v2_clutched = 0
-    player_2_1v2_clutched = 0
+    player_1_1v1_clutched = False
+    player_2_1v1_clutched = False
+    player_1_1v2_clutched = False
+    player_2_1v2_clutched = False
     bot_1_stocks = 0
     bot_2_stocks = 0
     bot_1_died = False
@@ -73,6 +74,11 @@ class Match(MDScreen):
             self.manager.transition.direction = 'up'
             self.manager.current = 'select_bot'
             self.manager.transition.duration = 0.4
+        else:
+            self.manager.transition.duration = 0.1
+            self.manager.transition.direction = 'up'
+            self.manager.current = 'set_player_stats'
+            self.manager.transition.duration = 0.4
 
     def bot_character_clicked(self, button):
         if self.selected_player == "bot_1":
@@ -96,13 +102,13 @@ class Match(MDScreen):
     # TODO: extend for 3p
     def stocks_button_clicked(self, button):
         if self.selected_player == "player_1":
-            self.player_1_stocks = button.stocks
+            self.player_1_stocks = int(button.stocks)
         elif self.selected_player == "player_2":
-            self.player_2_stocks = button.stocks
+            self.player_2_stocks = int(button.stocks)
         elif self.selected_player == "bot_1":
-            self.bot_1_stocks = button.stocks
+            self.bot_1_stocks = int(button.stocks)
         elif self.selected_player == "bot_2":
-            self.bot_2_stocks = button.stocks
+            self.bot_2_stocks = int(button.stocks)
 
     def on_died_checkbox_active(self, checkbox, active):
         print(self.selected_player)
@@ -137,7 +143,81 @@ class Match(MDScreen):
             self.bot_1_1v2_clutched = active
 
     def on_confirm_button_clicked(self):
-        print(self.bot_1_stocks)
-        print(self.bot_1_died)
-        print(self.bot_1_1v1_clutched)
-        print(self.bot_1_1v2_clutched)
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'match'
+        self.manager.transition.duration = 0.4
+        died_checkbox = self.manager.get_screen('set_player_stats').ids.get("died_checkbox")
+        clutched_1v1_checkbox = self.manager.get_screen('set_player_stats').ids.get("clutched_1v1_checkbox")
+        clutched_1v2_checkbox = self.manager.get_screen('set_player_stats').ids.get("clutched_1v2_checkbox")
+        died_checkbox.active = False
+        clutched_1v1_checkbox.active = False
+        clutched_1v2_checkbox.active = False
+
+    def reset_stats(self):
+        self.current_stage = ""
+        self.player_1_stocks = 0
+        self.player_2_stocks = 0
+        self.player_1_died = False
+        self.player_2_died = False
+        self. player_1_1v1_clutched = False
+        self.player_2_1v1_clutched = False
+        self.player_1_1v2_clutched = False
+        self.player_2_1v2_clutched = False
+        self.bot_1_stocks = 0
+        self.bot_2_stocks = 0
+        self. bot_1_died = False
+        self.bot_2_died = False
+        self.bot_1_1v1_clutched = False
+        self.bot_2_1v1_clutched = False
+        self.bot_1_1v2_clutched = False
+        self.bot_2_1v2_clutched = False
+        self.current_bot_1_character = ""
+        self.current_bot_2_character = ""
+        self.selected_player = ""
+
+    def update_current_match(self):
+        # TODO: append stages, append bots
+        shared.set_current_match("length", self.current_count)
+        player_1_current_stocks = int(shared.get_current_match_value_from_key("player_1_stocks"))
+        player_2_current_stocks = int(shared.get_current_match_value_from_key("player_2_stocks"))
+        print(type(player_1_current_stocks))
+        shared.set_current_match("player_1_stocks", player_1_current_stocks + self.player_1_stocks)
+        shared.set_current_match("player_2_stocks", player_2_current_stocks + self.player_2_stocks)
+        if self.player_1_died:
+            shared.set_current_match("player_1_died", str(int(shared.get_current_match_value_from_key("player_1_died")) + 1))
+        if self.player_2_died:
+            shared.set_current_match("player_2_died", str(int(shared.get_current_match_value_from_key("player_2_died")) + 1))
+        if self.player_1_1v1_clutched:
+            shared.set_current_match("player1_1v1_clutches", str(int(shared.get_current_match_value_from_key("player_1_1v1_clutches")) + 1))                       
+        if self.player_2_1v1_clutched:
+            shared.set_current_match("player2_1v1_clutches", str(int(shared.get_current_match_value_from_key("player_2_1v1_clutches")) + 1))
+        # TODO: ADD BOT CLUTCHES TO CURRENT_MATCH
+        # shared.set_current_match("bot1_1v2_clutches", str(int(shared.get_current_match_value_from_key("player_1_1v2_clutches")) + 1)
+        # shared.set_current_match("player_2_1v2_clutches", str(int(shared.get_current_match_value_from_key("player_2_1v2_clutches")) + 1)
+
+    def won_button_clicked(self):
+
+        if self.current_bot_1_character == "" or self.current_bot_2_character == "" or self.current_stage == "":
+            return
+        
+        self.update_current_match()
+
+        shared.pretty_print_current_match()
+
+        self.current_count += 1
+        counter_label = self.ids.get("counter_label")
+        counter_label.text = str(self.current_count)
+        bot_1_button = self.ids.get('bot_1_button')
+        bot_2_button = self.ids.get('bot_2_button')
+        stage_button = self.ids.get('stage_button')
+        bot_1_image = bot_1_button.children[0]
+        bot_2_image = bot_2_button.children[0]
+        stage_image = stage_button.children[0]
+        bot_1_image.source = ''
+        bot_2_image.source = ''
+        stage_image.source = ''
+        bot_1_image.opacity = 0
+        bot_2_image.opacity = 0
+        stage_image.opacity = 0
+        self.reset_stats()
