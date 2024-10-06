@@ -18,7 +18,7 @@ class SsbuStatTracker(MDApp):
     def build(self):
         Window.size = (1024, 600) 
         self.theme_cls.primary_palette = "Red"
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         sm = ScreenManager()
         
         sm.add_widget(MainMenu(name='main_menu'))

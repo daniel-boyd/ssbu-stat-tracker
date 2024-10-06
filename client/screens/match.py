@@ -47,8 +47,6 @@ class Match(MDScreen):
         player_2_label = self.ids.player_2_label
         player_1_label.text = shared.get_current_match_value_from_key("player_1")
         player_2_label.text = shared.get_current_match_value_from_key("player_2")
-        player_1_label.text = "dnl"
-        player_2_label.text = "cnl"
         self.set_player_character_images()
 
     def set_player_character_images(self):
@@ -76,8 +74,10 @@ class Match(MDScreen):
         image = button.children[0]
         image.source = image_source
         image.opacity = 1
+        self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
         self.manager.current = 'match'
+        self.manager.transition.duration = 0.4
 
     def player_button_clicked(self, button):
         self.selected_player = button.player_id
