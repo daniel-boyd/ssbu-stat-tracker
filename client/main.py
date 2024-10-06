@@ -17,19 +17,19 @@ from .screens.set_player_stats import SetPlayerStats
 class SsbuStatTracker(MDApp):
     def build(self):
         Window.size = (1024, 600) 
-        self.theme_cls.primary_palette = "Yellow"
+        self.theme_cls.primary_palette = "Red"
         self.theme_cls.theme_style = "Dark"
         sm = ScreenManager()
         
-        sm.add_widget(SelectPlayerCharacter(name='select_player_character'))
-        sm.add_widget(SetPlayerStats(name='set_player_stats'))
-        sm.add_widget(Match(name='match'))
         sm.add_widget(MainMenu(name='main_menu'))
         sm.add_widget(SelectPlayerCount(name='select_player_count'))
         sm.add_widget(SelectPlayerNames(name='select_player_names'))
         sm.add_widget(SelectGameMode(name='select_gamemode'))
         sm.add_widget(SelectCharacterMode(name='select_character_mode'))
         sm.add_widget(SelectCharacter(name='select_character'))
+        sm.add_widget(SelectPlayerCharacter(name='select_player_character'))
+        sm.add_widget(Match(name='match'))
+        sm.add_widget(SetPlayerStats(name='set_player_stats'))
         sm.add_widget(SelectBot(name='select_bot'))
         sm.add_widget(StageList(name='stage_list'))
         return sm

@@ -26,13 +26,13 @@ current_match = {
     "player_2_stocks": 0,
     "player_1_died": 0,
     "player_2_died": 0,
-    "player1_1v1_clutches": 0,
-    "player2_1v1_clutches": 0,
-    "player1_1v2_clutches": 0,
-    "player2_1v2_clutches": 0,
+    "player_1_1v1_clutches": 0,
+    "player_2_1v1_clutches": 0,
+    "player_1_1v2_clutches": 0,
+    "player_2_1v2_clutches": 0,
     "current_stage": "",
-    "bot_1_character": [],
-    "bot_2_character": [],
+    "bot_1_info_list": [],
+    "bot_2_info_list": [],
     "stages": [],
     "date": datetime.datetime.now(),
     "duration": 0,
@@ -40,6 +40,7 @@ current_match = {
 }
 
 def pretty_print_current_match():
+    # Assuming current_match is already defined with the necessary structure
     match_info = f"""
     Current Match Information:
     ---------------------------
@@ -54,22 +55,26 @@ def pretty_print_current_match():
     Player 1: {current_match["player_1"]}
         Character: {current_match["player_1_character"]}
         Stocks: {current_match["player_1_stocks"]}
-        died: {current_match["player_1_died"]}
-        1v1 Clutches: {current_match["player1_1v1_clutches"]}
-        1v2 Clutches: {current_match["player1_1v2_clutches"]}
+        Died: {current_match["player_1_died"]}
+        1v1 Clutches: {current_match["player_1_1v1_clutches"]}
+        1v2 Clutches: {current_match["player_1_1v2_clutches"]}
     
     Player 2: {current_match["player_2"]}
         Character: {current_match["player_2_character"]}
         Stocks: {current_match["player_2_stocks"]}
-        died: {current_match["player_2_died"]}
-        1v1 Clutches: {current_match["player2_1v1_clutches"]}
-        1v2 Clutches: {current_match["player2_1v2_clutches"]}
+        Died: {current_match["player_2_died"]}
+        1v1 Clutches: {current_match["player_2_1v1_clutches"]}
+        1v2 Clutches: {current_match["player_2_1v2_clutches"]}
     
     Current Stage: {current_match["current_stage"]}
+    
     Bots:
     -----------------
-    Bot 1 Characters: {', '.join(current_match["bot_1_character"]) if current_match["bot_1_character"] else "None"}
-    Bot 2 Characters: {', '.join(current_match["bot_2_character"]) if current_match["bot_2_character"] else "None"}
+    Bot 1:
+        {current_match["bot_1_info_list"]}
+    
+    Bot 2:
+        {current_match["bot_2_info_list"]}
     
     Stages: {', '.join(current_match["stages"]) if current_match["stages"] else "None"}
     
@@ -80,6 +85,7 @@ def pretty_print_current_match():
 
     print(match_info)
 
+
 def get_current_match():
     return current_match
 
@@ -88,6 +94,9 @@ def get_current_match_value_from_key(key):
 
 def set_current_format():
     current_match["format"] = current_match["game_mode_str"] + '_' + current_match["num_players_str"] + '_' + current_match["character_mode_str"]
+
+def append_list_member(key, value):
+    current_match[key].append(value)
 
 def set_current_match(key, value):
     current_match[key] = value

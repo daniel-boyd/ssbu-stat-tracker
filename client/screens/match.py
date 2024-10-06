@@ -1,7 +1,10 @@
+import datetime
 from .. import shared
 from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.button import MDExtendedFabButton
+from kivymd.uix.button import MDButton, MDButtonText
+from kivymd.uix.dialog import MDDialog, MDDialogHeadlineText
 
 Builder.load_file("client/layouts/match.kv")
 
@@ -31,8 +34,15 @@ class Match(MDScreen):
     current_bot_1_character = ""
     current_bot_2_character = ""
     selected_player = ""
+
+    start_time_reset = True
+    dialog = None
     
     def on_pre_enter(self):
+        if self.start_time_reset:
+            shared.set_current_match("date", datetime.datetime.now())
+            self.start_time_reset = False
+
         player_1_label = self.ids.player_1_label
         player_2_label = self.ids.player_2_label
         player_1_label.text = shared.get_current_match_value_from_key("player_1")
@@ -54,8 +64,10 @@ class Match(MDScreen):
 
 
     def stage_screen_button_clicked(self):
+        self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'stage_list'
+        self.manager.transition.duration = 0.4
 
     def stage_button_clicked(self, stage, image_source):
         self.current_stage = stage
@@ -111,8 +123,6 @@ class Match(MDScreen):
             self.bot_2_stocks = int(button.stocks)
 
     def on_died_checkbox_active(self, checkbox, active):
-        print(self.selected_player)
-        print(active)
         if self.selected_player == "player_1":
             self.player_1_died = active
         elif self.selected_player == "player_2":
@@ -130,7 +140,7 @@ class Match(MDScreen):
         elif self.selected_player == "bot_1":
             self.bot_1_1v1_clutched = active
         elif self.selected_player == "bot_2":
-            self.bot_1_1v1_clutched = active
+            self.bot_2_1v1_clutched = active
 
     def on_clutched_1v2_checkbox_active(self, checkbox, active):
         if self.selected_player == "player_1":
@@ -140,9 +150,10 @@ class Match(MDScreen):
         elif self.selected_player == "bot_1":
             self.bot_1_1v2_clutched = active
         elif self.selected_player == "bot_2":
-            self.bot_1_1v2_clutched = active
+            self.bot_2_1v2_clutched = active
 
     def on_confirm_button_clicked(self):
+        self.selected_player = ""
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'match'
@@ -177,24 +188,53 @@ class Match(MDScreen):
         self.selected_player = ""
 
     def update_current_match(self):
-        # TODO: append stages, append bots
+
+        start_date_time = shared.get_current_match_value_from_key("date")
+        shared.set_current_match("duration", datetime.datetime.now() - start_date_time)
+
         shared.set_current_match("length", self.current_count)
         player_1_current_stocks = int(shared.get_current_match_value_from_key("player_1_stocks"))
         player_2_current_stocks = int(shared.get_current_match_value_from_key("player_2_stocks"))
-        print(type(player_1_current_stocks))
         shared.set_current_match("player_1_stocks", player_1_current_stocks + self.player_1_stocks)
         shared.set_current_match("player_2_stocks", player_2_current_stocks + self.player_2_stocks)
+
+        # char name, stocks, 1v1 clutched, 1v2 clutched
+        bot_1_info_list = ["", 0, False, False]
+        bot_2_info_list = ["", 0, False, False]
+
+        # set bot chars, stocks
+        bot_1_info_list[0] = self.current_bot_1_character
+        bot_2_info_list[0] = self.current_bot_2_character
+        bot_1_info_list[1] = self.bot_1_stocks
+        bot_2_info_list[1] = self.bot_2_stocks
+
         if self.player_1_died:
             shared.set_current_match("player_1_died", str(int(shared.get_current_match_value_from_key("player_1_died")) + 1))
         if self.player_2_died:
-            shared.set_current_match("player_2_died", str(int(shared.get_current_match_value_from_key("player_2_died")) + 1))
+            shared.set_current_match("player_2_died", shared.get_current_match_value_from_key("player_2_died") + 1)
         if self.player_1_1v1_clutched:
-            shared.set_current_match("player1_1v1_clutches", str(int(shared.get_current_match_value_from_key("player_1_1v1_clutches")) + 1))                       
+            shared.set_current_match("player_1_1v1_clutches", shared.get_current_match_value_from_key("player_1_1v1_clutches") + 1)                  
         if self.player_2_1v1_clutched:
-            shared.set_current_match("player2_1v1_clutches", str(int(shared.get_current_match_value_from_key("player_2_1v1_clutches")) + 1))
-        # TODO: ADD BOT CLUTCHES TO CURRENT_MATCH
-        # shared.set_current_match("bot1_1v2_clutches", str(int(shared.get_current_match_value_from_key("player_1_1v2_clutches")) + 1)
-        # shared.set_current_match("player_2_1v2_clutches", str(int(shared.get_current_match_value_from_key("player_2_1v2_clutches")) + 1)
+            shared.set_current_match("player_2_1v1_clutches", shared.get_current_match_value_from_key("player_2_1v1_clutches") + 1)
+        if self.player_1_1v2_clutched:
+            shared.set_current_match("player_1_1v1_clutches", shared.get_current_match_value_from_key("player_1_1v2_clutches") + 1)                  
+        if self.player_2_1v2_clutched:
+            shared.set_current_match("player_2_1v1_clutches", shared.get_current_match_value_from_key("player_2_1v2_clutches") + 1)
+        if self.bot_1_1v1_clutched:
+            bot_1_info_list[2] = True     
+        if self.bot_2_1v1_clutched:
+            bot_2_info_list[2] = True   
+        if self.bot_1_1v2_clutched:
+            bot_1_info_list[3] = True                  
+        if self.bot_2_1v2_clutched:
+            bot_2_info_list[3] = True
+
+        # append bot info
+        shared.append_list_member("bot_1_info_list", bot_1_info_list)
+        shared.append_list_member("bot_2_info_list", bot_2_info_list)
+        
+        # append stage list
+        shared.append_list_member("stages", self.current_stage)
 
     def won_button_clicked(self):
 
@@ -221,3 +261,37 @@ class Match(MDScreen):
         bot_2_image.opacity = 0
         stage_image.opacity = 0
         self.reset_stats()
+
+    def dialog_close(self, *args):
+        print("DISMISSED")
+        if self.dialog:
+            try:
+                self.dialog.dismiss(force=True)  # Attempt to dismiss the dialog
+                self.dialog = None  # Reset the dialog reference
+            except Exception as e:
+                print(f"Error dismissing dialog: {e}")
+
+    def end_button_clicked(self):
+        if self.dialog is None:
+            self.dialog = MDDialog(
+                MDDialogHeadlineText(
+                    text="Confirm",
+                ),
+                MDButton(
+                    MDButtonText(
+                        text="Yes"
+                    )
+                ),
+                MDButton(
+                    MDButtonText(
+                        text="No",
+                        on_release=self.dialog_close
+                    )
+                ),
+                size_hint=(0.2, 1)
+            )
+        
+        self.dialog.open()  # Open the dialog
+
+    def cleanup(self):
+        self.start_time_reset = True

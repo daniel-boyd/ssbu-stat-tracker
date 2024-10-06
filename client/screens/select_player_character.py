@@ -48,14 +48,14 @@ class SelectPlayerCharacter(MDScreen):
         image.source = image_source
         image.opacity = 1
 
-    def player1_button_clicked(self):
+    def player_1_button_clicked(self):
         self.selected_player = "player_1"
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
         self.manager.transition.duration = 0.4
 
-    def player2_button_clicked(self):
+    def player_2_button_clicked(self):
         self.selected_player = "player_2"
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
