@@ -6,8 +6,8 @@ class Standard2PlrStreakCreate(BaseModel):
     player2: str
     player1_character: str
     player2_character: str
-    player1_kills: int
-    player2_kills: int
+    player1_stocks: int
+    player2_stocks: int
     player1_deaths: int
     player2_deaths: int
     player1_1v1_clutches: int

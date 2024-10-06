@@ -4,7 +4,7 @@ class PlrCreate(BaseModel):
     name: str
     streaks_played: int
     games_played: int
-    kills_total: int
+    stocks_total: int
     deaths_total: int
     kd_total: float
     clutches_1v1_total: int

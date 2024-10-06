@@ -8,7 +8,7 @@ class Plr(Base):
     name = Column(String)
     streaks_played = Column(Integer)
     games_played = Column(Integer)
-    kills_total = Column(Integer)
+    stocks_total = Column(Integer)
     deaths_total = Column(Integer)
     kd_total = Column(Float)
     clutches_1v1_total = Column(Integer)

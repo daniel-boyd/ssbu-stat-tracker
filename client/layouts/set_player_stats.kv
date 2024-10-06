@@ -1,0 +1,120 @@
+<SetPlayerStats>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+
+        MDFloatLayout:
+            id: r1
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": .5, "center_y": 0.85}
+
+            MDLabel:
+                id: stocks_label
+                text:  "Stocks"
+                halign: "center"
+                font_style: "Display"
+                font_size: "24sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        MDFloatLayout:
+            id: r2
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.2
+            pos_hint: {"center_x": .5, "center_y": 0.7}
+
+            MDExtendedFabButton:
+                id: zero_button
+                stocks: "0"
+                size_hint: 0.1, 0.8
+                pos_hint: {"center_x": .4, "center_y": .5}
+                on_release: app.root.get_screen('match').stocks_button_clicked(self)
+                MDExtendedFabButtonText:
+                    text: "0"
+
+            MDExtendedFabButton:
+                id: one_button
+                stocks: "1"
+                size_hint: 0.1, 0.8
+                pos_hint: {"center_x": .5, "center_y": .5}
+                on_release: app.root.get_screen('match').stocks_button_clicked(self)
+                MDExtendedFabButtonText:
+                    text: "1"
+
+            MDExtendedFabButton:
+                id: two_button
+                stocks: "2"
+                size_hint: 0.1, 0.8
+                pos_hint: {"center_x": .6, "center_y": .5}
+                on_release: app.root.get_screen('match').stocks_button_clicked(self)
+                MDExtendedFabButtonText:
+                    text: "2"
+
+        MDFloatLayout:
+            id: r3
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": .5, "center_y": 0.5}
+
+            MDLabel:
+                id: died_label
+                text:  "Died?"
+                halign: "center"
+                font_style: "Display"
+                font_size: "24sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDCheckbox:
+                size_hint: 1, 1
+                pos_hint: {'center_x': .6, 'center_y': 0.75}
+                on_active: app.root.get_screen('match').on_died_checkbox_active(self, self.active)
+
+        MDFloatLayout:
+            id: r4
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": .5, "center_y": 0.3}
+
+            MDLabel:
+                id: 1v1_clutch_label
+                text:  "Clutched 1v1?"
+                halign: "center"
+                font_style: "Display"
+                font_size: "24sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDCheckbox:
+                size_hint: 1, 1
+                pos_hint: {'center_x': .7, 'center_y': 0.7}
+                on_active: app.root.get_screen('match').on_clutched_1v1_checkbox_active(self, self.active)
+
+        MDFloatLayout:
+            id: r4
+            adaptive_size: False
+            orientation: 'horizontal'
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": .5, "center_y": 0.1}
+
+            MDLabel:
+                id: 1v1_clutch_label
+                text:  "Clutched 1v2?"
+                halign: "center"
+                font_style: "Display"
+                font_size: "24sp"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDCheckbox:
+                size_hint: 1, 1
+                pos_hint: {'center_x': .7, 'center_y': 0.75}
+                on_active: app.root.get_screen('match').on_clutched_1v2_checkbox_active(self, self.active)
+
+            MDExtendedFabButton
+                id:confirm_button
+                size_hint: .15, 1
+                pos_hint: {'center_x': .9, 'center_y':.75}
+                on_release: app.root.get_screen('match').on_confirm_button_clicked()
+                MDExtendedFabButtonText:
+                    text: "Confirm"
