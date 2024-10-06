@@ -90,13 +90,15 @@
                     font_size: "500sp"
                     pos_hint: {"center_x": 0.5, "center_y": .4}
 
-                MDExtendedFabButton:
+                BotMDExtendedFabButton:
                     id: bot_1_button
+                    bot_id: "bot_1"
                     size_hint: None, None
                     width: "128dp"
                     height: "128dp"
                     pos_hint: {"center_x": 0.6925, "center_y": .5}
                     font_size: "50sp"
+                    on_release: app.root.get_screen('match').bot_button_clicked(self)
 
                     Image:
                         source: ''
@@ -104,12 +106,14 @@
                         size_hint: 1, 1
                         pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-                MDExtendedFabButton:
+                BotMDExtendedFabButton:
                     id: bot_2_button
+                    bot_id: "bot_2"
                     size_hint: None, None
                     width: "128dp"
                     height: "128dp"
                     pos_hint: {"center_x": 0.89, "center_y": .5}
+                    on_release: app.root.get_screen('match').bot_button_clicked(self)
 
                     Image:
                         source: ''
@@ -127,14 +131,14 @@
             MDExtendedFabButton:
                 id: stage_button
                 size_hint: None, None
-                width: "128dp"
-                height: "128dp"
+                width: "192dp"
+                height: "100dp"
                 pos_hint: {"center_x": 0.5, "center_y": .5}
-                on_release: app.root.get_screen('match').stage_button_clicked()
+                on_release: app.root.get_screen('match').stage_screen_button_clicked()
                 Image:
                     source: ''
                     opacity: 0
-                    size_hint: 1, 1
+                    size_hint: 1.1, 1.1
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         MDFloatLayout:

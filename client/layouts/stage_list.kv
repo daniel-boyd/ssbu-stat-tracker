@@ -14,44 +14,53 @@
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/battlefield.png'
-                on_release: app.on_stage_selected('battlefield')
+                on_release: app.root.get_screen('match').stage_button_clicked('battlefield', self.background_normal)
                 
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/fd.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('final_destination', self.background_normal)
+
 
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/kalos.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('kalos', self.background_normal)
         
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/ps2.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('pokemon_stadium_2', self.background_normal)
                     
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/smallbattlefield.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('small_battlefield', self.background_normal)
             
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/smashville.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('smashville', self.background_normal)
 
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/townandcity.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('town_and_city', self.background_normal)
 
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/hollowbastion.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('hollow_bastion', self.background_normal)
 
             Button:
                 size_hint: None, None
                 size: 330, 187.5
                 background_normal: r'resources/stage_images/yoshistory.png'
+                on_release: app.root.get_screen('match').stage_button_clicked('yoshi_story', self.background_normal)

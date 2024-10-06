@@ -30,6 +30,10 @@ current_match = {
     "player2_1v1_clutches": 0,
     "player1_1v2_clutches": 0,
     "player2_1v2_clutches": 0,
+    "current_stage": "",
+    "bot_1_character": [],
+    "bot_2_character": [],
+    "stages": [],
     "date": datetime.datetime.now(),
     "duration": 0,
     "concluded": False

@@ -3,10 +3,10 @@ from kivy.lang import Builder
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
 
-Builder.load_file("client/layouts/select_character.kv")
+Builder.load_file("client/layouts/select_bot.kv")
 
-class CharacterButton(Button):
+class BotButton(Button):
     character_name = StringProperty('')
 
-class SelectCharacter(Screen):
+class SelectBot(Screen):
     pass

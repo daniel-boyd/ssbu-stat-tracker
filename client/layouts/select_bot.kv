@@ -1,0 +1,1311 @@
+<SelectBot>:
+    MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+        size_hint: 1, 1
+
+        MDGridLayout:
+            size_hint: 1, 1
+            rows: 8
+            cols: 11
+
+            BotButton:
+                character_name: "Mario"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+
+                Image:
+                    source: 'resources/character_images/mario.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+
+                    y: self.parent.y
+                    x: self.parent.x
+
+            BotButton:
+                character_name: "Donkey Kong"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/donkeykong.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Link"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/link.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Samus"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/samus.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Dark Samus"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/darksamus.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Josh"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/Josh.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Kirby"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/kirby.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Fox"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/fox.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pikachu"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pikachu.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Luigi"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/luigi.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ness"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ness.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Captain Falcon"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/captainfalcon.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Jigglypuff"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/jigglypuff.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Peach"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/peach.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Daisy"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/daisy.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Bowser"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/bowser.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ice Climbers"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/iceclimbers.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Sheik"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/sheik.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Zelda"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/zelda.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Dr. Mario"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/drmario.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pichu"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pichu.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Falco"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/falco.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Marth"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/woman.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Lucina"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/lucina.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Young Link"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/younglink.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ganondorf"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ganon.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mewtwo"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/mewtwo.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Roy"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/roy.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Chrom"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/chrom.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mr. Game and Watch"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/mrgameandwatch.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Meta Knight"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/metaknight.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pit"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pit.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Dark Pit"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/darkpit.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Zero Suit Samus"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/zss.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Wario"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/wario.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Snake"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/snake.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ike"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ike.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pokemon Trainer"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pt.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Diddy"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/diddy.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Lucas"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/lucas.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Sonic"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/sonic.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "King Dedede"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ddd.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Olimar"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/olimar.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Lucario"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/lucario.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Rob"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/rob.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Toon Link"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/toonlink.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Wolf"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/wolf.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Villager"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/villager.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mega Man"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/megaman.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Wii Fit Trainer"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/wiifit.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Rosalina & Luma"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/rosa.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Little Mac"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/littlemac.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Greninja"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/greninja.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Palutena"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/palutena.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pac-Man"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pacman.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Robin"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/robin.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Shulk"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/shulk.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Bowser Jr."
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/jr.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Duck Hunt Dog"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/duckhunt.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ryu"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ryu.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ken"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ken.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Cloud"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/cloud.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Corrin"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/corrin.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Bayonetta"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/bayo.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Inkling"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/inkling.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Ridley"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/ridley.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Simon"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/simon.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Richter"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/richter.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "King K. Rool"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/kingk.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Isabelle"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/isabelle.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Icineroar"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/incin.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Piranha Plant"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pplant.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Joker"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/joker.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Hero"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/hero.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Banjo"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/banjo.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Terry"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/terry.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Byleth"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/byleth.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: ""
+                size_hint: 1, 1
+                size: 96.091, 75
+
+            BotButton:
+                character_name: "Min Min"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/minmin.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Steve"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/steve.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Sephiroth"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/sephiroth.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Pyra and Mythra"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pyra.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Kazuya"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/kazuya.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Sora"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/pikachu.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mii Brawler"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/brawler.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mii Gunner"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/gunner.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: "Mii Swordfighter"
+                size_hint: 1, 1
+                size: 96.091, 75
+                background_normal: ''
+                background_color: 1, 0.65, 0, 1
+                button_down: 0, 1, 0, 1
+                on_release: app.root.get_screen('match').bot_character_clicked(self)
+                Image:
+                    source: 'resources/character_images/sword.png'
+                    size: 96.091, 75
+                    allow_stretch: False
+                    y: self.parent.y 
+                    x: self.parent.x 
+
+            BotButton:
+                character_name: ""
+                size_hint: 1, 1
+                size: 96.091, 75

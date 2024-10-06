@@ -72,3 +72,12 @@ class SelectPlayerCharacter(MDScreen):
                 return
         self.manager.transition.direction = 'left'
         self.manager.current = 'match'
+
+    # TODO: extend for 3p
+    def get_player_image_sources(self):
+        player_1_button = self.ids.get("player_1_button")
+        player_2_button = self.ids.get("player_2_button")
+        print(player_1_button.children[0].source)
+        player_1_image_source = player_1_button.children[0].source
+        player_2_image_source = player_2_button.children[0].source
+        return player_1_image_source, player_2_image_source
