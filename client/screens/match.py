@@ -12,6 +12,7 @@ class BotMDExtendedFabButton(MDExtendedFabButton):
     bot_id = ""
 
 # TODO: VERIFY PLAYER STATS GET SET BEFORE ALLOWING CONTINUE
+# TODO: IMPLEMENT RANDOM PLAYER CHARS
 class Match(MDScreen):
     current_count = 0
     current_stage = ""
@@ -33,6 +34,8 @@ class Match(MDScreen):
     bot_2_1v2_clutched = False
     current_bot_1_character = ""
     current_bot_2_character = ""
+    current_bot_1_character_image_source = ""
+    current_bot_2_character_image_source = ""
     selected_player = ""
 
     start_time_reset = True
@@ -40,6 +43,7 @@ class Match(MDScreen):
     
     def on_pre_enter(self):
         if self.start_time_reset:
+            self.populate_bot_button_image()
             shared.set_current_match("date", datetime.datetime.now())
             self.start_time_reset = False
 
@@ -81,35 +85,34 @@ class Match(MDScreen):
 
     def player_button_clicked(self, button):
         self.selected_player = button.player_id
-        if self.selected_player == "bot_1" or self.selected_player == "bot_2":
-            self.manager.transition.duration = 0.1
-            self.manager.transition.direction = 'up'
-            self.manager.current = 'select_bot'
-            self.manager.transition.duration = 0.4
-        else:
-            self.manager.transition.duration = 0.1
-            self.manager.transition.direction = 'up'
-            self.manager.current = 'set_player_stats'
-            self.manager.transition.duration = 0.4
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'set_player_stats'
+        self.manager.transition.duration = 0.4
 
-    def bot_character_clicked(self, button):
-        if self.selected_player == "bot_1":
-            self.current_bot_1_character = button.character_name
-        else:
-            self.current_bot_2_character = button.character_name
-        self.populate_bot_button_image(button.children[0].source)
-        self.setting_bot_stats = True
+    def bot_character_clicked(self):
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'left'
         self.manager.current = 'set_player_stats'
         self.manager.transition.duration = 0.4
 
-    def populate_bot_button_image(self, image_source):
-        id = self.selected_player + '_button'
-        button = self.ids.get(id) 
-        image = button.children[0]
-        image.source = image_source
-        image.opacity = 1
+    def populate_bot_button_image(self):
+        rand1 = shared.get_random_character()
+        rand2 = shared.get_random_character()
+        self.current_bot_1_character = rand1[0]
+        self.current_bot_1_character_image_source = rand1[1]
+        self.current_bot_2_character = rand2[0]
+        self.current_bot_2_character_image_source = rand2[1]
+
+        # Init set bot button images
+        bot_1_button = self.ids.get("bot_1_button")
+        bot_1_image = bot_1_button.children[0]
+        bot_1_image.source = self.current_bot_1_character_image_source
+        bot_1_image.opacity = 1
+        bot_2_button = self.ids.get("bot_2_button")
+        bot_2_image = bot_2_button.children[0]
+        bot_2_image.source = self.current_bot_2_character_image_source
+        bot_2_image.opacity = 1
 
     # TODO: extend for 3p
     def stocks_button_clicked(self, button):
@@ -261,6 +264,7 @@ class Match(MDScreen):
         bot_2_image.opacity = 0
         stage_image.opacity = 0
         self.reset_stats()
+        self.populate_bot_button_image()
 
     def dialog_close(self, *args):
         print("DISMISSED")
