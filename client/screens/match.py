@@ -152,18 +152,31 @@ class Match(MDScreen):
 
         # If mode is picks, set player_button_1 and player_button_2 images to player_1 and player_2 character selection images
         else:
-            # Get player chars and image sources
-            player_rand_1 = shared.get_character_by_name()
-            player_rand_2 = shared.get_character_by_name()
+            
 
             if shared.get_current_match_value_from_key("num_players_str") == "3p":
                 # LEFT OFF: Get the two active players, retrieve their characters using player_characters, and populate their images
-                
+                # Get player chars and image sources
+                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]])
+                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]])
+
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_char_1[0]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_char_1[1]
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_char_2[0]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_char_2[1]
             else:
-                self.player_characters[shared.get_current_match_value_from_key("players")[1]] = player_rand_1[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]] = player_rand_1[1]
-                self.player_characters[shared.get_current_match_value_from_key("players")[2]] = player_rand_2[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]] = player_rand_2[1]
+                print("******************************")
+                print(shared.get_current_match_value_from_key("players")[1])
+                print(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])
+                print(shared.get_current_match_value_from_key("player_characters"))
+                print(shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]]))
+                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])
+                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[2]])
+
+                self.player_characters[shared.get_current_match_value_from_key("players")[1]] = player_char_1[0]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]] = player_char_1[1]
+                self.player_characters[shared.get_current_match_value_from_key("players")[2]] = player_char_2[0]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]] = player_char_2[1]
 
             player_1_image_source, player_2_image_source = self.manager.get_screen('select_player_character').get_player_image_sources()
             player_button_1 = self.ids.get('player_button_1')
