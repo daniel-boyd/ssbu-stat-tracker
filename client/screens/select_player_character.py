@@ -6,19 +6,20 @@ Builder.load_file("client/layouts/select_player_character.kv")
 
 class SelectPlayerCharacter(MDScreen):
     selected_player = None
+    selected_player_int = None
 
     def on_pre_enter(self):
         player_1_label = self.ids.player_1_label
         player_2_label = self.ids.player_2_label
-        player_1_label.text = shared.get_current_match_value_from_key("player_1")
-        player_2_label.text = shared.get_current_match_value_from_key("player_2")
+        print(shared.get_current_match_value_from_key("players"))
+        player_1_label.text = shared.get_current_match_value_from_key("players")[1]
+        player_2_label.text = shared.get_current_match_value_from_key("players")[2]
 
     # Cleanup buttons and current_match keys on enter
     def cleanup(self):
         player_1_button = self.ids.player_1_button
         player_2_button = self.ids.player_2_button
-        shared.set_current_match("player_1_character", "")
-        shared.set_current_match("player_2_character", "")
+        shared.set_current_match("player_characters", {})
         player_1_button.children[0].opacity = 0
         player_2_button.children[0].opacity = 0
         player_1_button.children[0].source = ''
@@ -31,8 +32,7 @@ class SelectPlayerCharacter(MDScreen):
 
     def on_character_button_pressed(self, button):
         character_name = button.character_name
-        selected_player_key = self.selected_player + '_character'
-        shared.set_current_match(selected_player_key, character_name)
+        shared.set_stat("player_characters", shared.get_current_match_value_from_key("players")[self.selected_player_int] , character_name)
         self.populate_player_button_image(button.children[0].source)
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
@@ -50,6 +50,7 @@ class SelectPlayerCharacter(MDScreen):
 
     def player_1_button_clicked(self):
         self.selected_player = "player_1"
+        self.selected_player_int = 1
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
@@ -57,6 +58,7 @@ class SelectPlayerCharacter(MDScreen):
 
     def player_2_button_clicked(self):
         self.selected_player = "player_2"
+        self.selected_player_int = 2
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
         self.manager.current = 'select_character'
@@ -67,7 +69,8 @@ class SelectPlayerCharacter(MDScreen):
         # For players 1-3, check if they have a character selected before allowing the match to start
         for index in range(1, 3):
             plr_char_str = f"player_{index}_character"
-            if current_match[plr_char_str] == "":
+            print(shared.get_current_match_value_from_key("player_characters"))
+            if shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[index]] == "":
                 print(plr_char_str + " not selected")
                 return
         self.manager.transition.direction = 'left'

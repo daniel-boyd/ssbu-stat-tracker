@@ -26,14 +26,12 @@ class SelectPlayerNames(MDScreen):
             if text_field.text == "":
                 return
 
+        shared.set_current_match("players", {})
         for index, text_field in enumerate(self.text_fields):
             plr_str = f"player_{index + 1}"
             print(plr_str)
-            # All players in the game will be added, remove any existing player in case player count changes
-            shared.remove_key_from_current_match(plr_str)
-            # Always remove player_3
-            shared.remove_key_from_current_match("player_3")
-            shared.set_current_match(plr_str, text_field.text)
+            # All players in the game will be added, reset players to empty list
+            shared.add_player(index + 1, text_field.text)
         self.manager.transition.direction = 'left'
         self.manager.current = 'select_gamemode'
                 
