@@ -106,7 +106,6 @@ class Match(MDScreen):
     def reset_stats_in_memory(self):
         players = shared.get_current_match()["players"]
         for player_id, player_name in players.items():
-            print(player_name)
             self.player_stocks[player_name] = 0
             self.player_died[player_name] = False
             self.player_1v1_clutched[player_name] = False
@@ -131,9 +130,9 @@ class Match(MDScreen):
 
             if shared.get_current_match_value_from_key("num_players_str") == "3p":
                 # Yeah, this looks ridiculous. It's setting the characters of the two active players based on the active state
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_rand_1[0]
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_rand_1[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_rand_1[1]
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_rand_2[0]
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_rand_2[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_rand_2[1]
             else:
                 self.player_characters[shared.get_current_match_value_from_key("players")[1]] = player_rand_1[0]
@@ -157,21 +156,16 @@ class Match(MDScreen):
             if shared.get_current_match_value_from_key("num_players_str") == "3p":
                 # LEFT OFF: Get the two active players, retrieve their characters using player_characters, and populate their images
                 # Get player chars and image sources
-                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]])
-                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]])
+                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
+                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
 
                 self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_char_1[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_char_1[1]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_char_1[1]
                 self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_char_2[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_char_2[1]
+                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]] = player_char_2[1]
             else:
-                print("******************************")
-                print(shared.get_current_match_value_from_key("players")[1])
-                print(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])
-                print(shared.get_current_match_value_from_key("player_characters"))
-                print(shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]]))
-                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])
-                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[2]])
+                player_char_1 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])[0])
+                player_char_2 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[2]])[0])
 
                 self.player_characters[shared.get_current_match_value_from_key("players")[1]] = player_char_1[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]] = player_char_1[1]
@@ -196,7 +190,6 @@ class Match(MDScreen):
 
     def stage_button_clicked(self, stage, image_source):
         self.current_stage = stage
-        print(image_source)
         button = self.ids.get('stage_button')
         image = button.children[0]
         image.source = image_source
@@ -327,7 +320,6 @@ class Match(MDScreen):
             shared.set_stat("player_deaths", player_name, 0)
             shared.set_stat("player_1v1_clutches", player_name, 0)
             shared.set_stat("player_1v2_clutches", player_name, 0)
-            shared.set_stat("player_characters", player_name, [])
             index += 1
 
     # Save and reset player member vars
@@ -339,7 +331,6 @@ class Match(MDScreen):
         while index <= num_players:
             # Increment current_match stocks
             player_name = shared.get_current_match_value_from_key("players")[index]
-            print(self.player_stocks)
             shared.increment_stat("player_stocks", player_name, self.player_stocks[player_name])
             # Increment current_match deaths
             if self.player_died[player_name]:
@@ -352,11 +343,11 @@ class Match(MDScreen):
                 shared.increment_stat("player_1v2_clutches", player_name, 1)
             # Append current_match character
             if shared.get_current_match_value_from_key("character_mode_str") == "pick":
-                print("The ONE!")
-                print(self.player_characters)
-                shared.append_player_character_list(player_name, self.player_characters[player_name])
+                # shared.append_player_character_list(player_name, self.player_characters[player_name])
+                pass
             elif shared.get_current_match_value_from_key("character_mode_str") == "random":
-                shared.set_stat("player_characters", self.player_characters[player_name])
+                print(shared.get_current_match_value_from_key("player_characters"))
+                shared.append_player_character_list(player_name, self.player_characters[player_name])
             index += 1
 
         # Stats saved to current_match, reset them in self
@@ -402,6 +393,7 @@ class Match(MDScreen):
         
         self.update_player_stats()
         self.update_current_match()
+        self.set_player_characters()
 
         # Increment the player state and update necessary vars and properties
         if shared.get_current_match_value_from_key("num_players_str") == "3p":
@@ -429,10 +421,9 @@ class Match(MDScreen):
         bot_2_image.opacity = 0
         stage_image.opacity = 0
         self.reset_stats()
-        self.populate_bot_button_image()
+        self.populate_bot_button_images()
 
     def dialog_close(self, *args):
-        print("DISMISSED")
         if self.dialog:
             try:
                 self.dialog.dismiss(force=True)  # Attempt to dismiss the dialog

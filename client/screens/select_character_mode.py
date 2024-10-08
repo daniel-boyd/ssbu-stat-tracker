@@ -19,4 +19,4 @@ class SelectCharacterMode(MDScreen):
         shared.set_current_match("character_mode_str", "random")
         shared.set_current_format()
         self.manager.transition.direction = 'left'
-        self.manager.current = 'match_screen'
+        self.manager.current = 'match'
