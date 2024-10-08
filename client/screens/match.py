@@ -78,6 +78,10 @@ class Match(MDScreen):
             self.populate_bot_button_images()
             shared.set_current_match("date", datetime.datetime.now())
             self.start_time_reset = False
+            if shared.get_current_match_value_from_key("game_mode_str") == "handicap":
+                self.ids.counter_label.text = f"{self.current_count*10}%"
+            else:
+                self.ids.counter_label.text = str(self.current_count)
             player_label_1 = self.ids.player_label_1
             player_label_2 = self.ids.player_label_2
             player_label_1.text = shared.get_current_match_value_from_key("players")[1]
@@ -209,9 +213,12 @@ class Match(MDScreen):
     def stage_button_clicked(self, stage, image_source):
         self.current_stage = stage
         button = self.ids.get('stage_button')
-        image = button.children[0]
+        image = button.children[1]
         image.source = image_source
         image.opacity = 1
+        text = button.children[0]
+        print(text)
+        text.text = ""
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
         self.manager.current = 'match'
@@ -339,8 +346,8 @@ class Match(MDScreen):
             if self.player_1v2_clutched[player_name]:
                 shared.increment_stat("player_1v2_clutches", player_name, 1)
             # Append current_match character
-            if shared.get_current_match_value_from_key("character_mode_str") == "pick":
-                # shared.append_player_character_list(player_name, self.player_characters[player_name])
+            if shared.get_current_match_value_from_key("character_mode_str") == "random" and shared.get_current_match_value_from_key("num_players_str") == "2p":
+                shared.append_player_character_list(player_name, self.player_characters[player_name])
                 pass
             index += 1
 
@@ -384,6 +391,8 @@ class Match(MDScreen):
 
         if self.current_bot_1_character == "" or self.current_bot_2_character == "" or self.current_stage == "":
             return
+        
+        self.current_count += 1
 
         self.update_player_stats()
         self.update_current_match()
@@ -397,8 +406,6 @@ class Match(MDScreen):
             self.cycle_players()
 
         self.set_player_characters()
-        
-        self.current_count += 1
 
         if shared.get_current_match_value_from_key("character_mode_str") == "handicap":
             self.current_starting_percentage += 10
@@ -407,16 +414,21 @@ class Match(MDScreen):
         print(shared.get_current_match())
 
         counter_label = self.ids.get("counter_label")
-        counter_label.text = str(self.current_count)
+        if shared.get_current_match_value_from_key("game_mode_str") == "handicap":
+            counter_label.text = f"{self.current_count*10}%"
+        else:
+            counter_label.text = str(self.current_count)
         bot_1_button = self.ids.get('bot_1_button')
         bot_2_button = self.ids.get('bot_2_button')
         stage_button = self.ids.get('stage_button')
         bot_1_image = bot_1_button.children[0]
         bot_2_image = bot_2_button.children[0]
-        stage_image = stage_button.children[0]
+        stage_image = stage_button.children[1]
+        stage_text = stage_button.children[0]
         bot_1_image.source = ''
         bot_2_image.source = ''
         stage_image.source = ''
+        stage_text.text = "Select Stage"
         bot_1_image.opacity = 0
         bot_2_image.opacity = 0
         stage_image.opacity = 0

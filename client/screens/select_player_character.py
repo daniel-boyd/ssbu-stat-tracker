@@ -18,7 +18,6 @@ class SelectPlayerCharacter(MDScreen):
     def cleanup(self):
         player_1_button = self.ids.player_1_button
         player_2_button = self.ids.player_2_button
-        shared.set_current_match("player_characters", {})
         player_1_button.children[0].opacity = 0
         player_2_button.children[0].opacity = 0
         player_1_button.children[0].source = ''

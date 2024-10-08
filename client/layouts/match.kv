@@ -134,9 +134,9 @@
             
             MDExtendedFabButton:
                 id: stage_button
-                size_hint: None, None
-                width: "192dp"
-                height: "100dp"
+                size_hint: 0.2, 0.6
+                #width: "192dp"
+                #height: "100dp"
                 pos_hint: {"center_x": 0.5, "center_y": .5}
                 on_release: app.root.get_screen('match').stage_screen_button_clicked()
                 Image:
@@ -144,6 +144,10 @@
                     opacity: 0
                     size_hint: 1.1, 1.1
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                MDExtendedFabButtonText:
+                    id: stage_button_text
+                    size_hint: 1, 1
+                    text: "Select Stage"
 
         MDFloatLayout:
             id: box
