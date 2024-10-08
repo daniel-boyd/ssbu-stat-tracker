@@ -407,15 +407,13 @@ class Match(MDScreen):
 
         self.set_player_characters()
 
-        if shared.get_current_match_value_from_key("character_mode_str") == "handicap":
-            self.current_starting_percentage += 10
-            shared.set_current_match("highest_starting_percentage", self.current_starting_percentage)
-
         print(shared.get_current_match())
 
         counter_label = self.ids.get("counter_label")
         if shared.get_current_match_value_from_key("game_mode_str") == "handicap":
-            counter_label.text = f"{self.current_count*10}%"
+            self.current_starting_percentage = self.current_count*10
+            counter_label.text = f"{self.current_starting_percentage}%"
+            shared.set_current_match("highest_starting_percentage", self.current_starting_percentage)
         else:
             counter_label.text = str(self.current_count)
         bot_1_button = self.ids.get('bot_1_button')
