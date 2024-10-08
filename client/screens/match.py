@@ -30,7 +30,6 @@ class Match(MDScreen):
         (1, 2),
         (3, 1),
         (2, 3),
-        (1, 2)
     ]
 
     # Match Info
@@ -70,6 +69,8 @@ class Match(MDScreen):
     def on_pre_enter(self):
         # Runs once
         if self.start_time_reset:
+            self.reset_match_player_characters()
+            self.reset_stats()
             self.init_player_stats()
             self.set_format()
             self.set_player_characters()
@@ -77,11 +78,17 @@ class Match(MDScreen):
             self.populate_bot_button_images()
             shared.set_current_match("date", datetime.datetime.now())
             self.start_time_reset = False
+            player_label_1 = self.ids.player_label_1
+            player_label_2 = self.ids.player_label_2
+            player_label_1.text = shared.get_current_match_value_from_key("players")[1]
+            player_label_2.text = shared.get_current_match_value_from_key("players")[2]
 
-        player_label_1 = self.ids.player_label_1
-        player_label_2 = self.ids.player_label_2
-        player_label_1.text = shared.get_current_match_value_from_key("players")[1]
-        player_label_2.text = shared.get_current_match_value_from_key("players")[2]
+    def reset_match_player_characters(self):
+        # Init class player_characters to current_match player_characters
+        self.player_characters[shared.get_current_match_value_from_key("players")[1]] = ""
+        self.player_characters[shared.get_current_match_value_from_key("players")[2]] = ""
+        if shared.get_current_match_value_from_key("num_players_str") == "3p":
+            self.player_characters[shared.get_current_match_value_from_key("players")[3]] = ""
 
     # If random remove current_match player char members, add current_match char lists
     def set_format(self):
@@ -116,10 +123,12 @@ class Match(MDScreen):
         # Get player 1, 2, or 3 based on the current active player state,
         # Set the player_name property of the button so that selected_player can be set to the correct player
         # Set the player_labels for aesthetics :)
-        self.ids.player_button_1.player_name = shared.get_current_match_value_from_key("players")[self.states_3p[0]]
-        self.ids.player_button_2.player_name = shared.get_current_match_value_from_key("players")[self.states_3p[1]]
-        self.ids.player_label_1.text = shared.get_current_match_value_from_key("players")[self.states_3p[0]]
-        self.ids.player_label_2.player_name = shared.get_current_match_value_from_key("players")[self.states_3p[1]]
+        print(f"Player1: {shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]}")
+        print(f"Player2: {shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]}")
+        self.ids.player_button_1.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
+        self.ids.player_button_2.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]
+        self.ids.player_label_1.text = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
+        self.ids.player_label_2.text = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]
 
     def set_player_characters(self):
 
@@ -129,25 +138,31 @@ class Match(MDScreen):
             player_rand_2 = shared.get_random_character()
 
             if shared.get_current_match_value_from_key("num_players_str") == "3p":
-                # Yeah, this looks ridiculous. It's setting the characters of the two active players based on the active state
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_rand_1[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_rand_1[1]
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_rand_2[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_rand_2[1]
+                player_button_1 = self.ids.get("player_button_1")
+                player_button_2 = self.ids.get("player_button_2")
+                self.player_characters[player_button_1.player_id] = player_rand_1[0]
+                self.player_character_image_sources[player_button_1.player_id] = player_rand_1[1]
+                self.player_characters[player_button_2.player_id] = player_rand_2[0]
+                self.player_character_image_sources[player_button_2.player_id] = player_rand_2[1]
+                player_image_1 = player_button_1.children[0]
+                player_image_1.source = self.player_character_image_sources[player_button_1.player_id]
+                player_image_1.opacity = 1
+                player_image_2 = player_button_2.children[0]
+                player_image_2.source = self.player_character_image_sources[player_button_2.player_id]
+                player_image_2.opacity = 1
             else:
                 self.player_characters[shared.get_current_match_value_from_key("players")[1]] = player_rand_1[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]] = player_rand_1[1]
                 self.player_characters[shared.get_current_match_value_from_key("players")[2]] = player_rand_2[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]] = player_rand_2[1]
-
-            player_button_1 = self.ids.get("player_button_1")
-            player_image_1 = player_button_1.children[0]
-            player_image_1.source = self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]]
-            player_image_1.opacity = 1
-            player_button_2 = self.ids.get("player_button_2")
-            player_image_2 = player_button_2.children[0]
-            player_image_2.source = self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]]
-            player_image_2.opacity = 1
+                player_button_1 = self.ids.get("player_button_1")
+                player_image_1 = player_button_1.children[0]
+                player_image_1.source = self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]]
+                player_image_1.opacity = 1
+                player_button_2 = self.ids.get("player_button_2")
+                player_image_2 = player_button_2.children[0]
+                player_image_2.source = self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]]
+                player_image_2.opacity = 1
 
         # If mode is picks, set player_button_1 and player_button_2 images to player_1 and player_2 character selection images
         else:
@@ -159,9 +174,9 @@ class Match(MDScreen):
                 player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
                 player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
 
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[0]]]] = player_char_1[0]
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_char_1[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_char_1[1]
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state[1]]]] = player_char_2[0]
+                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]] = player_char_2[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]] = player_char_2[1]
             else:
                 player_char_1 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])[0])
@@ -181,6 +196,9 @@ class Match(MDScreen):
             player_image_2.source = player_2_image_source
             player_image_1.opacity = 1
             player_image_2.opacity = 1
+
+        print('SET PLAYER CHARS')
+        print(self.player_characters)
         
     def stage_screen_button_clicked(self):
         self.manager.transition.duration = 0.1
@@ -200,7 +218,6 @@ class Match(MDScreen):
         self.manager.transition.duration = 0.4
 
     def player_button_clicked(self, button):
-        # TODO: set player_name concurrently with setting chars (if 3p)
         self.selected_player = button.player_id
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'up'
@@ -214,7 +231,6 @@ class Match(MDScreen):
         self.manager.transition.duration = 0.4
 
     def populate_bot_button_images(self):
-
         # Randomize bot chars
         bot_1_rand = shared.get_random_character()
         bot_2_rand = shared.get_random_character()
@@ -233,44 +249,16 @@ class Match(MDScreen):
 
     # TODO: extend for 3p
     def stocks_button_clicked(self, button):
-        if self.selected_player == "player_1":
-            self.player_1_stocks = int(button.stocks)
-        elif self.selected_player == "player_2":
-            self.player_2_stocks = int(button.stocks)
-        elif self.selected_player == "bot_1":
-            self.bot_1_stocks = int(button.stocks)
-        elif self.selected_player == "bot_2":
-            self.bot_2_stocks = int(button.stocks)
+        self.player_stocks[self.selected_player] = int(button.stocks)
 
     def on_died_checkbox_active(self, checkbox, active):
-        if self.selected_player == "player_1":
-            self.player_1_died = active
-        elif self.selected_player == "player_2":
-            self.player_2_died = active
-        elif self.selected_player == "bot_1":
-            self.bot_1_died = active
-        elif self.selected_player == "bot_2":
-            self.bot_2_died = active
+        self.player_died[self.selected_player] = active
 
     def on_clutched_1v1_checkbox_active(self, checkbox, active):
-        if self.selected_player == "player_1":
-            self.player_1_1v1_clutched = active
-        elif self.selected_player == "player_2":
-            self.player_2_1v1_clutched = active
-        elif self.selected_player == "bot_1":
-            self.bot_1_1v1_clutched = active
-        elif self.selected_player == "bot_2":
-            self.bot_2_1v1_clutched = active
+        self.player_1v1_clutched[self.selected_player] = active
 
     def on_clutched_1v2_checkbox_active(self, checkbox, active):
-        if self.selected_player == "player_1":
-            self.player_1_1v2_clutched = active
-        elif self.selected_player == "player_2":
-            self.player_2_1v2_clutched = active
-        elif self.selected_player == "bot_1":
-            self.bot_1_1v2_clutched = active
-        elif self.selected_player == "bot_2":
-            self.bot_2_1v2_clutched = active
+        self.player_1v2_clutched[self.selected_player] = active
 
     def on_confirm_button_clicked(self):
         self.selected_player = ""
@@ -310,6 +298,9 @@ class Match(MDScreen):
     # To be called on pre enter
     # Set shared stat dictionaries with player names as keys and default values
     def init_player_stats(self):
+        # Set first two player names as button 1 and button 2 player_id
+        self.ids.player_button_1.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
+        self.ids.player_button_2.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]
         num_players = 2
         if shared.get_current_match_value_from_key("num_players_str") == "3p":
             num_players = 3
@@ -326,6 +317,12 @@ class Match(MDScreen):
     def update_player_stats(self):
         num_players = 2
         if shared.get_current_match_value_from_key("num_players_str") == "3p":
+            # Append characters of the two active players if random
+            if shared.get_current_match_value_from_key("character_mode_str") == "random":
+                player_name_1 = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
+                player_name_2 = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]
+                shared.append_player_character_list(player_name_1, self.player_characters[player_name_1])
+                shared.append_player_character_list(player_name_2, self.player_characters[player_name_2])
             num_players = 3
         index = 1
         while index <= num_players:
@@ -345,9 +342,6 @@ class Match(MDScreen):
             if shared.get_current_match_value_from_key("character_mode_str") == "pick":
                 # shared.append_player_character_list(player_name, self.player_characters[player_name])
                 pass
-            elif shared.get_current_match_value_from_key("character_mode_str") == "random":
-                print(shared.get_current_match_value_from_key("player_characters"))
-                shared.append_player_character_list(player_name, self.player_characters[player_name])
             index += 1
 
         # Stats saved to current_match, reset them in self
@@ -390,21 +384,27 @@ class Match(MDScreen):
 
         if self.current_bot_1_character == "" or self.current_bot_2_character == "" or self.current_stage == "":
             return
-        
+
         self.update_player_stats()
         self.update_current_match()
-        self.set_player_characters()
+        self.reset_match_player_characters()
 
         # Increment the player state and update necessary vars and properties
         if shared.get_current_match_value_from_key("num_players_str") == "3p":
             self.current_state += 1
+            if self.current_state > 2:
+                self.current_state = 0
             self.cycle_players()
+
+        self.set_player_characters()
         
         self.current_count += 1
 
         if shared.get_current_match_value_from_key("character_mode_str") == "handicap":
             self.current_starting_percentage += 10
             shared.set_current_match("highest_starting_percentage", self.current_starting_percentage)
+
+        print(shared.get_current_match())
 
         counter_label = self.ids.get("counter_label")
         counter_label.text = str(self.current_count)

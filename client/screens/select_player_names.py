@@ -33,7 +33,7 @@ class SelectPlayerNames(MDScreen):
             shared.add_player(index + 1, text_field.text)
             # Initialize player names as keys in player_characters so that the key will exist regardless of character mode
             # (reset this in cleanup of this screen in case number of players changes)
-            shared.set_stat("player_characters", shared.get_current_match_value_from_key("players")[index + 1] , [""])
+            shared.set_stat("player_characters", shared.get_current_match_value_from_key("players")[index + 1] , [])
         print("******************")
         print(shared.get_current_match_value_from_key("player_characters"))
         self.manager.transition.direction = 'left'
