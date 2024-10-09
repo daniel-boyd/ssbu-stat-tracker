@@ -10,6 +10,7 @@ from .screens.select_character_mode import SelectCharacterMode
 from .screens.select_character import SelectCharacter
 from .screens.select_bot import SelectBot
 from .screens.select_player_character import SelectPlayerCharacter
+from .screens.select_player_character_3p import SelectPlayerCharacter3p
 from .screens.stage_list import StageList
 from .screens.match import Match
 from .screens.set_player_stats import SetPlayerStats
@@ -28,6 +29,7 @@ class SsbuStatTracker(MDApp):
         sm.add_widget(SelectCharacterMode(name='select_character_mode'))
         sm.add_widget(SelectCharacter(name='select_character'))
         sm.add_widget(SelectPlayerCharacter(name='select_player_character'))
+        sm.add_widget(SelectPlayerCharacter3p(name='select_player_character_3p'))
         sm.add_widget(Match(name='match'))
         sm.add_widget(SetPlayerStats(name='set_player_stats'))
         sm.add_widget(SelectBot(name='select_bot'))
