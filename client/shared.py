@@ -166,7 +166,7 @@ character_list = [
     ("Sephiroth", "resources/character_images/sephiroth.png"),
     ("Pyra and Mythra", "resources/character_images/pyra.png"),
     ("Kazuya", "resources/character_images/kazuya.png"),
-    ("Sora", ""),
+    ("Sora", "resources/character_images/sora.png"),
     ("Mii Brawler", "resources/character_images/brawler.png"),
     ("Mii Gunner", "resources/character_images/gunner.png"),
     ("Mii Swordfighter", "resources/character_images/sword.png"),

@@ -433,35 +433,42 @@ class Match(MDScreen):
         self.reset_stats()
         self.populate_bot_button_images()
 
-    def dialog_close(self, *args):
-        if self.dialog:
-            try:
-                self.dialog.dismiss(force=True)  # Attempt to dismiss the dialog
-                self.dialog = None  # Reset the dialog reference
-            except Exception as e:
-                print(f"Error dismissing dialog: {e}")
+    # def dialog_close(self, *args):
+    #     if self.dialog:
+    #         try:
+    #             self.dialog.dismiss(force=True)  # Attempt to dismiss the dialog
+    #             self.dialog = None  # Reset the dialog reference
+    #         except Exception as e:
+    #             print(f"Error dismissing dialog: {e}")
 
     def end_button_clicked(self):
-        if self.dialog is None:
-            self.dialog = MDDialog(
-                MDDialogHeadlineText(
-                    text="Confirm",
-                ),
-                MDButton(
-                    MDButtonText(
-                        text="Yes"
-                    )
-                ),
-                MDButton(
-                    MDButtonText(
-                        text="No",
-                        on_release=self.dialog_close
-                    )
-                ),
-                size_hint=(0.2, 1)
-            )
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'stats_screen'
+    #     if self.dialog is None:
+    #         self.dialog = MDDialog(
+    #             MDDialogHeadlineText(
+    #                 text="Confirm",
+    #             ),
+    #             MDButton(
+    #                 MDButtonText(
+    #                     text="Yes",
+    #                     on_release=self.go_to_stats_screen
+    #                 )
+    #             ),
+    #             MDButton(
+    #                 MDButtonText(
+    #                     text="No",
+    #                     on_release=self.dialog_close
+    #                 )
+    #             ),
+    #             size_hint=(0.2, 1)
+    #         )
         
-        self.dialog.open()  # Open the dialog
+    #     self.dialog.open()  # Open the dialog
 
-    def cleanup(self):
-        self.start_time_reset = True
+    # def go_to_stats_screen(self):
+    #     self.manager.current = 'stats_screen'
+    #     self.dialog.dismiss()
+
+    # def cleanup(self):
+    #     self.start_time_reset = True

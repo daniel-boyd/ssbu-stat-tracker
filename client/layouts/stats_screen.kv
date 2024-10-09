@@ -1,0 +1,167 @@
+<StatsScreen>:
+    MDScreen:
+
+    MDFloatLayout:
+        id:r1
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .9}
+        
+        MDLabel:
+            id:stats_label
+            text: "Stats"
+            font_style: "Display"
+            halign: "center"
+            font_size: "24sp"
+            pos_hint: {"center_x": .5, "center_y": .5}
+
+    MDFloatLayout:
+        id: r2
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .75}
+
+        MDLabel:
+            id: player_1_stats
+            text: "Player 1"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .2, "center_y": .9}
+
+        MDLabel:
+            id: player_2_stats
+            text: "Player 2"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .4, "center_y": .9}
+
+        MDLabel:
+            id: bot_stats
+            text: "Most Valuable Bots"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .75, "center_y": .9}
+
+    MDFloatLayout:
+        id: r3
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .7}
+        # md_bg_color: 1, 1, 0, 1
+
+        MDLabel:
+            id: stocks_label
+            text: "Stocks:"
+            font_style: "Title"
+            pos_hint: {"center_x": .045, "center_y": .5}
+            halign: "center"
+        MDLabel:
+            id: player_1_stocks_taken
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .2, "center_y": .5}
+
+        MDLabel:
+            id: player_2_stocks_taken
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .4, "center_y": .5}
+
+    MDFloatLayout:
+        id: r4
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .5}
+        # md_bg_color: 1, 1, 0, 1 
+
+        MDLabel:
+            id: deaths_label
+            text: "Deaths:"
+            font_style: "Title"
+            pos_hint: {"center_x": .045, "center_y": .5}
+            halign: "center"
+        
+        MDLabel:
+            id: player_1_deaths
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .2, "center_y": .5}
+
+        MDLabel:
+            id: player_2_deaths
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .4, "center_y": .5}
+
+    MDFloatLayout:
+        id: r5
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .3}
+        # md_bg_color: 1, 1, 0, 1
+        
+        MDLabel:
+            id: 1v1_stats_label
+            text: "1v1 Clutched:"
+            font_style: "Title"
+            role: "small"
+            pos_hint: {"center_x": .045, "center_y": .5}
+            halign: "center"
+        
+        MDLabel:
+            id: player_1_1v1_clutched
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .2, "center_y": .5}
+
+        MDLabel:
+            id: player_2_1v1_clutched
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .4, "center_y": .5}
+
+    MDFloatLayout:
+        id: r5
+        adaptive_size: False
+        orientation: 'horizontal'
+        size_hint: 1, 0.1
+        pos_hint: {"center_x": .5, "center_y": .1}
+        # md_bg_color: 1, 1, 0, 1 
+        
+        MDLabel:
+            id: 1v2_stats_label
+            text: "1v2 Clutched:"
+            font_style: "Title"
+            role: "small"
+            pos_hint: {"center_x": .045, "center_y": .5}
+            halign: "center"
+
+        MDLabel:
+            id: player_1_1v2_clutched
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .2, "center_y": .5}
+
+        MDLabel:
+            id: player_2_1v2_clutched
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .4, "center_y": .5}
+
+
+
+         
+
