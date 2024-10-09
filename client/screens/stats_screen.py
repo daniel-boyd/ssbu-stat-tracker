@@ -42,4 +42,16 @@ class StatsScreen(MDScreen):
         self.ids.player_1_1v2_clutches.text = player_1_1v1_clutches
         self.ids.player_2_1v2_clutches.text = player_2_1v1_clutches
 
+        #TODO Make Stats Reset On cont button clicked
+    def continue_button_clicked(self):
+        if shared.get_current_match_value_from_key("character_mode_str") == ("pick"):
+            self.manager.transition.direction = 'left'
+            self.manager.current = 'select_player_character'
+        else:
+            self.manager.transition.direction = 'left'
+            self.manager.current = 'match'
+
+    
+    
+
 pass

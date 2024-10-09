@@ -161,6 +161,14 @@
             halign: "center"
             pos_hint: {"center_x": .4, "center_y": .5}
 
+        MDExtendedFabButton:
+            id: continue_button
+            size_hint: 0.1, 1
+            pos_hint: {"center_x": .94, "center_y": .5}
+            on_release: app.root.get_screen('stats_screen').continue_button_clicked()
+            MDExtendedFabButtonText:
+                text: "Cont."
+
 
 
          
