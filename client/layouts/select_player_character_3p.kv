@@ -24,12 +24,12 @@
                     size: dp(100), dp(100)
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-        MDBoxLayout:
+        MDFloatLayout:
             id: box
             adaptive_size: False
             orientation: 'horizontal'
-            spacing: "10dp"
-            size_hint: 0.68, None
+            spacing: "0dp"
+            size_hint: 1, None
             height: "50dp"
             pos_hint: {"center_x": .5, "center_y": .75}
 
@@ -57,21 +57,21 @@
                 font_size: "24sp"
                 pos_hint: {"center_x": .75, "center_y": .7}
 
-        MDBoxLayout:
+        MDFloatLayout:
             id: box
             adaptive_size: False
             orientation: 'horizontal'
-            spacing: "230dp"
-            width: "600dp"
-            height: "400dp"
-            pos_hint: {"center_x": 0.765, "center_y": .6}
+            spacing: "0dp"
+            size_hint: 1, None
+            height: "200dp"
+            pos_hint: {"center_x": .5, "center_y": .6}
 
             MDExtendedFabButton:
                 id: player_1_button
                 size_hint: None, None
                 width: "128dp"
                 height: "128dp"
-                pos_hint: {"center_x": 0.0, "center_y": .5}
+                pos_hint: {"center_x": 0.25, "center_y": .5}
                 on_release: on_release: app.root.get_screen('select_player_character_3p').player_1_button_clicked()
                 font_size: "50sp"
 
@@ -86,7 +86,7 @@
                 size_hint: None, None
                 width: "128dp"
                 height: "128dp"
-                pos_hint: {"center_x": .25, "center_y": .5}
+                pos_hint: {"center_x": .5, "center_y": .5}
                 on_release: app.root.get_screen('select_player_character_3p').player_2_button_clicked()
 
                 Image:
@@ -100,7 +100,7 @@
                 size_hint: None, None
                 width: "128dp"
                 height: "128dp"
-                pos_hint: {"center_x": .5, "center_y": .5}
+                pos_hint: {"center_x": .75, "center_y": .5}
                 on_release: app.root.get_screen('select_player_character_3p').player_3_button_clicked()
 
                 Image:
@@ -123,6 +123,6 @@
                 size_hint: 1, None
                 height: "80dp"
                 pos_hint: {"center_x": .5, "center_y": .3}
-                on_release: app.root.get_screen('select_player_character').start_button_clicked()
+                on_release: app.root.get_screen('select_player_character_3p').start_button_clicked()
                 MDExtendedFabButtonText:
                     text: "Start"

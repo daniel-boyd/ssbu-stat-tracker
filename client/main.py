@@ -14,13 +14,24 @@ from .screens.select_player_character_3p import SelectPlayerCharacter3p
 from .screens.stage_list import StageList
 from .screens.match import Match
 from .screens.set_player_stats import SetPlayerStats
+from . import shared
+
+# Character buttons in select_character.kv call this function, which determines the current
+# active screen and calls the appropriate function from that screen
+class SSBUScreenManager(ScreenManager):
+    def handle_character_button_press(self, button):
+        if shared.get_current_match_value_from_key("num_players_str") == "3p":
+            self.get_screen("select_player_character_3p").on_character_button_pressed(button)
+        else:
+            self.get_screen("select_player_character").on_character_button_pressed(button)
+
 
 class SsbuStatTracker(MDApp):
     def build(self):
         Window.size = (1024, 600) 
         self.theme_cls.primary_palette = "Green"
         self.theme_cls.theme_style = "Dark"
-        sm = ScreenManager()
+        sm = SSBUScreenManager()
         
         sm.add_widget(MainMenu(name='main_menu'))
         sm.add_widget(SelectPlayerCount(name='select_player_count'))
