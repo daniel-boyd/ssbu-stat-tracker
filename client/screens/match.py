@@ -275,7 +275,7 @@ class Match(MDScreen):
     def on_confirm_button_clicked(self):
         self.selected_player = ""
         self.manager.transition.duration = 0.1
-        self.manager.transition.direction = 'up'
+        self.manager.transition.direction = 'down'
         self.manager.current = 'match'
         self.manager.transition.duration = 0.4
         died_checkbox = self.manager.get_screen('set_player_stats').ids.get("died_checkbox")
