@@ -443,7 +443,7 @@ class Match(MDScreen):
 
     def end_button_clicked(self):
         self.manager.transition.direction = 'left'
-        self.manager.current = 'stats_screen'
+        self.manager.current = 'post_game_stats_screen'
     #     if self.dialog is None:
     #         self.dialog = MDDialog(
     #             MDDialogHeadlineText(
