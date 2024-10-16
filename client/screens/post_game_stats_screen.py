@@ -42,7 +42,7 @@ class PostGameStatsScreen(MDScreen):
         self.ids.player_1_1v2_clutches.text = player_1_1v1_clutches
         self.ids.player_2_1v2_clutches.text = player_2_1v1_clutches
             #Bot Stats Start
-        bot_stocks = shared.get_current_match_value_from_key("")
+        # bot_stocks = shared.get_current_match_value_from_key("")
         
 
         #TODO Make Stats Reset On cont button clicked
