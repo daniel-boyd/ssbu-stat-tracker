@@ -1,0 +1,95 @@
+from kivy.lang import Builder
+from kivymd.uix.screen import MDScreen
+from .. import shared
+
+Builder.load_file("client/layouts/select_player_character_3p.kv")
+
+class SelectPlayerCharacter3p(MDScreen):
+    selected_player = None
+    selected_player_int = None
+
+    def on_pre_enter(self):
+        player_1_label = self.ids.player_1_label
+        player_2_label = self.ids.player_2_label
+        player_3_label = self.ids.player_3_label
+        player_1_label.text = shared.get_current_match_value_from_key("players")[1]
+        player_2_label.text = shared.get_current_match_value_from_key("players")[2]
+        player_3_label.text = shared.get_current_match_value_from_key("players")[3]
+
+    # Cleanup buttons and current_match keys on enter
+    def cleanup(self):
+        player_1_button = self.ids.player_1_button
+        player_2_button = self.ids.player_2_button
+        player_3_button = self.ids.player_3_button
+        player_1_button.children[0].opacity = 0
+        player_2_button.children[0].opacity = 0
+        player_3_button.children[0].opacity = 0
+        player_1_button.children[0].source = ''
+        player_2_button.children[0].source = ''
+        player_3_button.children[0].source = ''
+
+    def on_back_button_clicked(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'select_character_mode'
+        self.cleanup()
+
+    def on_character_button_pressed(self, button):
+        character_name = button.character_name
+        shared.set_stat("player_characters", shared.get_current_match_value_from_key("players")[self.selected_player_int] , [character_name])
+        self.populate_player_button_image(button.children[0].source)
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'down'
+        self.manager.current = 'select_player_character_3p'
+        self.manager.transition.duration = 0.4
+        current_match = shared.get_current_match()
+
+    def populate_player_button_image(self, image_source):
+        id = self.selected_player + '_button'
+        button = self.ids.get(id) 
+        image = button.children[0]
+        image.source = image_source
+        image.opacity = 1
+
+    def player_1_button_clicked(self):
+        self.selected_player = "player_1"
+        self.selected_player_int = 1
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'select_character'
+        self.manager.transition.duration = 0.4
+
+    def player_2_button_clicked(self):
+        self.selected_player = "player_2"
+        self.selected_player_int = 2
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'select_character'
+        self.manager.transition.duration = 0.4
+
+    def player_3_button_clicked(self):
+        self.selected_player = "player_3"
+        self.selected_player_int = 3
+        self.manager.transition.duration = 0.1
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'select_character'
+        self.manager.transition.duration = 0.4
+    
+    def start_button_clicked(self):
+        current_match = shared.get_current_match()
+        # For players 1-3, check if they have a character selected before allowing the match to start
+        for index in range(1, 3):
+            plr_char_str = f"player_{index}_character"
+            if shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[index]] == "":
+                return
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'match'
+
+    # TODO: extend for 3p
+    def get_player_image_sources(self):
+        player_1_button = self.ids.get("player_1_button")
+        player_2_button = self.ids.get("player_2_button")
+        player_3_button = self.ids.get("player_3_button")
+        player_1_image_source = player_1_button.children[0].source
+        player_2_image_source = player_2_button.children[0].source
+        player_3_image_source = player_3_button.children[0].source
+        return player_1_image_source, player_2_image_source, player_3_image_source

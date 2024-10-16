@@ -90,9 +90,12 @@ class Match(MDScreen):
     def reset_match_player_characters(self):
         # Init class player_characters to current_match player_characters
         self.player_characters[shared.get_current_match_value_from_key("players")[1]] = ""
+        self.player_character_image_sources[shared.get_current_match_value_from_key("players")[1]] = ""
         self.player_characters[shared.get_current_match_value_from_key("players")[2]] = ""
+        self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]] = ""
         if shared.get_current_match_value_from_key("num_players_str") == "3p":
             self.player_characters[shared.get_current_match_value_from_key("players")[3]] = ""
+            self.player_character_image_sources[shared.get_current_match_value_from_key("players")[3]] = ""
 
     # If random remove current_match player char members, add current_match char lists
     def set_format(self):
@@ -127,8 +130,6 @@ class Match(MDScreen):
         # Get player 1, 2, or 3 based on the current active player state,
         # Set the player_name property of the button so that selected_player can be set to the correct player
         # Set the player_labels for aesthetics :)
-        print(f"Player1: {shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]}")
-        print(f"Player2: {shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]}")
         self.ids.player_button_1.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
         self.ids.player_button_2.player_id = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]
         self.ids.player_label_1.text = shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]
@@ -173,15 +174,23 @@ class Match(MDScreen):
             
 
             if shared.get_current_match_value_from_key("num_players_str") == "3p":
-                # LEFT OFF: Get the two active players, retrieve their characters using player_characters, and populate their images
                 # Get player chars and image sources
-                player_char_1 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
-                player_char_2 = shared.get_character_by_name(shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]])
+                player_button_1 = self.ids.get("player_button_1")
+                player_button_2 = self.ids.get("player_button_2")
+                player_char_1 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[player_button_1.player_id])[0])
+                player_char_2 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[player_button_2.player_id])[0])
 
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_char_1[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][0]]] = player_char_1[1]
-                self.player_characters[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]] = player_char_2[0]
-                self.player_character_image_sources[shared.get_current_match_value_from_key("players")[self.states_3p[self.current_state][1]]] = player_char_2[1]
+                self.player_characters[player_button_1.player_id] = player_char_1[0]
+                self.player_character_image_sources[player_button_1.player_id] = player_char_1[1]
+                self.player_characters[player_button_2.player_id] = player_char_2[0]
+                self.player_character_image_sources[player_button_2.player_id] = player_char_2[1]
+
+                player_image_1 = player_button_1.children[0]
+                player_image_1.source = self.player_character_image_sources[player_button_1.player_id]
+                player_image_1.opacity = 1
+                player_image_2 = player_button_2.children[0]
+                player_image_2.source = self.player_character_image_sources[player_button_2.player_id]
+                player_image_2.opacity = 1
             else:
                 player_char_1 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[1]])[0])
                 player_char_2 = shared.get_character_by_name((shared.get_current_match_value_from_key("player_characters")[shared.get_current_match_value_from_key("players")[2]])[0])
@@ -191,18 +200,15 @@ class Match(MDScreen):
                 self.player_characters[shared.get_current_match_value_from_key("players")[2]] = player_char_2[0]
                 self.player_character_image_sources[shared.get_current_match_value_from_key("players")[2]] = player_char_2[1]
 
-            player_1_image_source, player_2_image_source = self.manager.get_screen('select_player_character').get_player_image_sources()
-            player_button_1 = self.ids.get('player_button_1')
-            player_button_2 = self.ids.get('player_button_2')
-            player_image_1 = player_button_1.children[0]
-            player_image_2 = player_button_2.children[0]
-            player_image_1.source = player_1_image_source
-            player_image_2.source = player_2_image_source
-            player_image_1.opacity = 1
-            player_image_2.opacity = 1
-
-        print('SET PLAYER CHARS')
-        print(self.player_characters)
+                player_1_image_source, player_2_image_source = self.manager.get_screen('select_player_character').get_player_image_sources()
+                player_button_1 = self.ids.get('player_button_1')
+                player_button_2 = self.ids.get('player_button_2')
+                player_image_1 = player_button_1.children[0]
+                player_image_2 = player_button_2.children[0]
+                player_image_1.source = player_1_image_source
+                player_image_2.source = player_2_image_source
+                player_image_1.opacity = 1
+                player_image_2.opacity = 1
         
     def stage_screen_button_clicked(self):
         self.manager.transition.duration = 0.1
@@ -217,7 +223,6 @@ class Match(MDScreen):
         image.source = image_source
         image.opacity = 1
         text = button.children[0]
-        print(text)
         text.text = ""
         self.manager.transition.duration = 0.1
         self.manager.transition.direction = 'down'
@@ -270,7 +275,7 @@ class Match(MDScreen):
     def on_confirm_button_clicked(self):
         self.selected_player = ""
         self.manager.transition.duration = 0.1
-        self.manager.transition.direction = 'up'
+        self.manager.transition.direction = 'down'
         self.manager.current = 'match'
         self.manager.transition.duration = 0.4
         died_checkbox = self.manager.get_screen('set_player_stats').ids.get("died_checkbox")
