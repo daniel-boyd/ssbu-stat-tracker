@@ -256,7 +256,12 @@ class Match(MDScreen):
 
     # TODO: extend for 3p
     def stocks_button_clicked(self, button):
-        self.player_stocks[self.selected_player] = int(button.stocks)
+        if self.selected_player == "bot_1":
+            self.bot_1_stocks = button.stocks
+        elif self.selected_player == "bot_2":
+            self.bot_2_stocks = button.stocks
+        else:
+            self.player_stocks[self.selected_player] = int(button.stocks)
 
     def on_died_checkbox_active(self, checkbox, active):
         self.player_died[self.selected_player] = active
@@ -374,7 +379,7 @@ class Match(MDScreen):
         if self.bot_1_1v1_clutched:
             bot_1_info_list[2] = True     
         if self.bot_2_1v1_clutched:
-            bot_2_info_list[2] = True   
+            bot_2_info_list[2] = True
         if self.bot_1_1v2_clutched:
             bot_1_info_list[3] = True                  
         if self.bot_2_1v2_clutched:
