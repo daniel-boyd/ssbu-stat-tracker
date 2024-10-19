@@ -13,7 +13,7 @@ from .screens.select_player_character import SelectPlayerCharacter
 from .screens.stage_list import StageList
 from .screens.match import Match
 from .screens.set_player_stats import SetPlayerStats
-from .screens.stats_screen import StatsScreen
+from .screens.post_game_stats_screen import PostGameStatsScreen
 
 class SsbuStatTracker(MDApp):
     def build(self):
@@ -33,7 +33,7 @@ class SsbuStatTracker(MDApp):
         sm.add_widget(SetPlayerStats(name='set_player_stats'))
         sm.add_widget(SelectBot(name='select_bot'))
         sm.add_widget(StageList(name='stage_list'))
-        sm.add_widget(StatsScreen(name='stats_screen'))
+        sm.add_widget(PostGameStatsScreen(name='post_game_stats_screen'))
         return sm
 
 if __name__ == '__main__':

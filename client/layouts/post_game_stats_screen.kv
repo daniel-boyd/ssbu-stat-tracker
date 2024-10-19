@@ -1,5 +1,7 @@
-<StatsScreen>:
+<PostGameStatsScreen>:
     MDScreen:
+        md_bg_color: self.theme_cls.backgroundColor
+        size_hint: 1, 1
 
     MDFloatLayout:
         id:r1
@@ -10,7 +12,7 @@
         
         MDLabel:
             id:stats_label
-            text: "Stats"
+            text: "Post-Game Stats"
             font_style: "Display"
             halign: "center"
             font_size: "24sp"
@@ -38,8 +40,8 @@
             pos_hint: {"center_x": .4, "center_y": .9}
 
         MDLabel:
-            id: bot_stats
-            text: "Most Valuable Bots"
+            id: bots_stats_label
+            text: "Bots Stats"
             font_style: "Headline"
             halign: "center"
             pos_hint: {"center_x": .75, "center_y": .9}
@@ -71,6 +73,21 @@
             font_style: "Headline"
             halign: "center"
             pos_hint: {"center_x": .4, "center_y": .5}
+
+        MDLabel:
+            id: bot_stocks_label
+            text: "Total Stocks:"
+            font_style: "Title"
+            pos_hint: {"center_x": .55, "center_y": .5}
+            halign: "center"
+        
+        MDLabel:
+            id: total_stocks
+            text: "0"
+            font_style: "Headline"
+            halign: "center"
+            pos_hint: {"center_x": .75, "center_y": .5}
+            
 
     MDFloatLayout:
         id: r4
@@ -111,9 +128,8 @@
         
         MDLabel:
             id: 1v1_stats_label
-            text: "1v1 Clutches:"
+            text: "1v1:"
             font_style: "Title"
-            role: "small"
             pos_hint: {"center_x": .045, "center_y": .5}
             halign: "center"
         
@@ -141,9 +157,8 @@
         
         MDLabel:
             id: 1v2_stats_label
-            text: "1v2 Clutches:"
+            text: "1v2:"
             font_style: "Title"
-            role: "small"
             pos_hint: {"center_x": .045, "center_y": .5}
             halign: "center"
 
@@ -165,7 +180,7 @@
             id: continue_button
             size_hint: 0.1, 1
             pos_hint: {"center_x": .94, "center_y": .5}
-            on_release: app.root.get_screen('stats_screen').continue_button_clicked()
+            on_release: app.root.get_screen('post_game_stats_screen').continue_button_clicked()
             MDExtendedFabButtonText:
                 text: "Cont."
 

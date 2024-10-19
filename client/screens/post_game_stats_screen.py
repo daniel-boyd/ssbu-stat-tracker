@@ -3,9 +3,9 @@ from kivy.lang import Builder
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.button import MDExtendedFabButton
 
-Builder.load_file("client/layouts/stats_screen.kv")
+Builder.load_file("client/layouts/post_game_stats_screen.kv")
 
-class StatsScreen(MDScreen):
+class PostGameStatsScreen(MDScreen):
 
     def on_pre_enter(self):
         player_1_stats = self.ids.player_1_stats
@@ -41,17 +41,13 @@ class StatsScreen(MDScreen):
         player_2_1v2_clutches = str(player_1v2_clutches.get(player_2_name,0))
         self.ids.player_1_1v2_clutches.text = player_1_1v1_clutches
         self.ids.player_2_1v2_clutches.text = player_2_1v1_clutches
+            #Bot Stats Start
+        # bot_stocks = shared.get_current_match_value_from_key("")
+        
 
         #TODO Make Stats Reset On cont button clicked
     def continue_button_clicked(self):
-        if shared.get_current_match_value_from_key("character_mode_str") == ("pick"):
-            self.manager.transition.direction = 'left'
-            self.manager.current = 'select_player_character'
-        else:
-            self.manager.transition.direction = 'left'
-            self.manager.current = 'match'
-
-    
-    
-
+        shared.reset_current_match
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'main_menu'
 pass
